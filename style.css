@@ -25,7 +25,7 @@ body {
   line-height: 1.6;
 }
 
-/* 🔷 Шапка */
+/* Шапка */
 header {
   position: fixed;
   top: 0;
@@ -57,10 +57,6 @@ header {
   color: #fff;
 }
 
-.site-icon svg {
-  display: block;
-}
-
 .call-btn {
   display: flex;
   align-items: center;
@@ -73,7 +69,7 @@ header {
   width: 40px;
 }
 
-/* 🔷 Контент */
+/* Контент */
 .content-grid {
   display: block;
   padding: 20px 16px;
@@ -95,21 +91,40 @@ header {
   padding-left: 0;
 }
 
-.content-grid li, .content-grid p {
+/* Локації з кнопками */
+.locations-list li {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* 🧾 Форма запису */
-.booking {
-  padding: 20px 16px;
-  background-color: var(--gray);
-  border-radius: 12px;
-  margin: 20px 16px;
+.location-actions {
+  display: flex;
+  gap: 8px;
 }
 
+.icon-btn {
+  background-color: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.icon-btn:hover {
+  background-color: #e03128;
+}
+
+/* Запис */
 .booking h2 {
   margin-top: 0;
   font-size: 18px;
@@ -153,11 +168,7 @@ header {
   background-color: #e03128;
 }
 
-/* 🗺️ Карта */
-.map {
-  padding: 20px 16px;
-}
-
+/* Карта */
 .map-placeholder {
   background-color: var(--gray);
   padding: 60px;
@@ -167,7 +178,14 @@ header {
   text-align: center;
 }
 
-/* 🔻 Футер */
+/* Контейнер форми + мапи */
+.bottom-grid {
+  display: block;
+  padding: 20px 16px;
+  gap: 20px;
+}
+
+/* Футер */
 footer {
   padding: 20px 16px;
   font-size: 12px;
@@ -175,7 +193,7 @@ footer {
   color: #777;
 }
 
-/* 💻 Десктоп — 3 колонки */
+/* 💻 Десктоп — 3 колонки + форма + мапа в ряд */
 @media (min-width: 768px) {
   .content-grid {
     display: flex;
@@ -189,11 +207,29 @@ footer {
     margin-bottom: 0;
   }
 
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding-inline: 40px;
+    align-items: stretch;
+  }
+
   .booking,
-  .map,
+  .map {
+    margin: 0;
+    padding: 20px;
+    height: 100%;
+    background-color: var(--gray);
+    border-radius: 12px;
+  }
+
+  .map-placeholder {
+    height: 100%;
+  }
+
   footer,
   header {
     padding-inline: 40px;
   }
 }
-
