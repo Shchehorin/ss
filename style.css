@@ -1,3 +1,4 @@
+/* 🎨 Кольори */
 :root {
   --bg-color: #1c1c1e;
   --text-color: #fff;
@@ -5,6 +6,7 @@
   --gray: #2c2c2e;
 }
 
+/* 📄 Базова розмітка */
 html, body {
   margin: 0;
   padding: 0;
@@ -21,10 +23,11 @@ html, body {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 60px; /* відступ під фіксовану шапку */
   line-height: 1.6;
 }
 
+/* 🔷 Шапка */
 header {
   position: fixed;
   top: 0;
@@ -37,17 +40,31 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding-inline: 16px;
   z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-header h1 {
-  font-size: 16px;
-  margin: 0;
+/* 🔸 Назва сайту в боксі */
+.site-title-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 12px;
+}
+
+.site-title {
+  font-size: 14px;
   color: #fff;
 }
 
+.site-icon svg {
+  display: block;
+}
+
+/* 🔸 Кнопка дзвінка */
 .call-btn {
   display: flex;
   align-items: center;
@@ -60,13 +77,21 @@ header h1 {
   width: 40px;
 }
 
+/* 🔷 Контент — 1 колонка на моб, 3 на десктопі */
 .content-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  padding: 20px 16px;
+  display: block;
+  padding-inline: 16px;
+  padding-block: 20px;
 }
 
+.content-grid > div {
+  background-color: var(--gray);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* 🔷 Контент усередині */
 .content-grid h2 {
   margin-top: 0;
 }
@@ -77,14 +102,16 @@ header h1 {
 }
 
 .content-grid li, .content-grid p {
-  background-color: var(--gray);
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 10px;
 }
 
+/* 🔷 Мапа */
 .map {
-  padding: 20px 16px;
+  padding-block: 20px;
+  padding-inline: 16px;
 }
 
 .map-placeholder {
@@ -96,43 +123,30 @@ header h1 {
   text-align: center;
 }
 
+/* 🔷 Футер */
 footer {
-  padding: 20px;
+  padding: 20px 16px;
   font-size: 12px;
   text-align: center;
   color: #777;
 }
 
-/* Десктоп: 3 колонки */
+/* 💻 Десктоп — 3 колонки */
 @media (min-width: 768px) {
   .content-grid {
-    grid-template-columns: repeat(3, 1fr);
-    padding: 40px;
-  }
-}
-.site-title {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-size: 14px;
-  color: #fff;
-  margin: 0;
-}
-.content-grid,
-.map,
-footer {
-  padding-inline: 16px;
-}
-
-/* На десктопі — трохи більше */
-@media (min-width: 768px) {
-  .content-grid,
-  .map,
-  footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
     padding-inline: 40px;
+    padding-block: 40px;
   }
 
-  header {
+  .content-grid > div {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .map, footer, header {
     padding-inline: 40px;
   }
 }
