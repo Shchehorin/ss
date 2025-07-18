@@ -1,260 +1,60 @@
-:root {
-  --bg-color: #1c1c1e;
-  --text-color: #fff;
-  --accent: #ff3b30;
-  --gray: #2c2c2e;
+/*
+  Тут ви можете додавати власні CSS-стилі, які доповнюватимуть
+  або перевизначатимуть стилі Tailwind CSS.
+*/
+
+/* Додаткові стилі для iOS-подібних тіней та округлень */
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+.rounded-xl {
+    border-radius: 1rem; /* 16px */
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.6;
-  padding-top: 60px;
+.rounded-2xl {
+    border-radius: 2rem; /* 32px */
 }
 
-/* Шапка */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 48px;
-  background: rgba(28, 28, 30, 0.75);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 16px;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+.rounded-b-xl {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
-.site-title-box {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 6px 12px;
-  border-radius: 12px;
+.rounded-t-xl {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
 }
 
-.site-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  white-space: nowrap;
+/* Стилі для кнопок, щоб вони виглядали більш "iOS-но" */
+button {
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.call-btn {
-  position: absolute;
-  right: 16px;
-  top: 8px;
-  background-color: var(--accent);
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+button:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Контент */
-.content-grid {
-  display: block;
-  padding: 20px 16px;
+/* Стилі для посилань у навігації (якщо будуть додані пізніше) */
+nav a {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.content-grid > div {
-  background-color: var(--gray);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
+nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #60A5FA; /* Колір підсвічування */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
 }
 
-.content-grid h2 {
-  margin-top: 0;
-}
-
-.content-grid ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.content-grid li,
-.content-grid p {
-  background-color: rgba(255,255,255,0.05);
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-}
-
-/* Локації */
-.locations-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.locations-list li {
-  background-color: rgba(255,255,255,0.05);
-  padding: 12px 14px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.location-address {
-  flex-grow: 1;
-  font-size: 14px;
-}
-
-.location-actions {
-  display: flex;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.plain-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.plain-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: #fff;
-  fill: #fff;
-}
-
-.plain-icon:hover {
-  opacity: 0.7;
-}
-
-/* Форма запису */
-.booking h2 {
-  margin-top: 0;
-  font-size: 18px;
-}
-
-.booking form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.booking input,
-.booking textarea {
-  background-color: rgba(255,255,255,0.05);
-  color: #fff;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  resize: none;
-}
-
-.booking input::placeholder,
-.booking textarea::placeholder {
-  color: #aaa;
-}
-
-.booking button {
-  background-color: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 12px;
-  font-size: 15px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.booking button:hover {
-  background-color: #e03128;
-}
-
-/* Карта */
-.map-placeholder {
-  background-color: var(--gray);
-  padding: 60px;
-  border-radius: 12px;
-  margin-top: 10px;
-  color: #888;
-  text-align: center;
-}
-
-/* Запис + мапа */
-.bottom-grid {
-  display: block;
-  padding: 20px 16px;
-  gap: 20px;
-}
-
-/* Футер */
-footer {
-  padding: 20px 16px;
-  font-size: 12px;
-  text-align: center;
-  color: #777;
-}
-
-/* Десктоп адаптація */
-@media (min-width: 768px) {
-  .content-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 40px;
-  }
-
-  .content-grid > div {
-    flex: 1;
-    margin-bottom: 0;
-  }
-
-  .bottom-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 0 40px;
-    align-items: stretch;
-  }
-
-  .booking,
-  .map {
-    margin: 0;
-    padding: 20px;
-    background-color: var(--gray);
-    border-radius: 12px;
-    height: 100%;
-  }
-
-  .map-placeholder {
-    height: 100%;
-  }
-
-  footer,
-  header {
-    padding-inline: 40px;
-  }
+nav a:hover::before {
+    transform: translateX(0);
 }
