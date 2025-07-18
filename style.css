@@ -118,3 +118,21 @@ footer {
   color: #fff;
   margin: 0;
 }
+.content-grid,
+.map,
+footer {
+  padding-inline: 16px;
+}
+
+/* На десктопі — трохи більше */
+@media (min-width: 768px) {
+  .content-grid,
+  .map,
+  footer {
+    padding-inline: 40px;
+  }
+
+  header {
+    padding-inline: 40px;
+  }
+}
