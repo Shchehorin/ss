@@ -16,31 +16,30 @@ body {
 
 header {
   background-color: var(--gray);
-  padding: 40px 20px 20px;
-  text-align: center;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
 }
 
 header h1 {
-  font-size: 24px;
+  font-size: 16px;
   margin: 0;
+  color: #fff;
 }
 
 header p {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #aaa;
+  display: none; /* приховуємо опис у вузькій шапці */
 }
 
 .call-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 28px;
   background-color: var(--accent);
   color: #fff;
-  font-size: 16px;
-  border-radius: 16px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
   text-decoration: none;
-  transition: 0.2s;
 }
 
 .call-btn:hover {
