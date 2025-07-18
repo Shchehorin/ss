@@ -5,14 +5,24 @@
   --gray: #2c2c2e;
 }
 
-body {
+html, body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
   background-color: var(--bg-color);
   color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding-top: 60px;
   line-height: 1.6;
-  padding: 0;
-  padding-top: 40px; /* щоб вміст не потрапляв під шапку */
 }
 
 header {
@@ -20,8 +30,8 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 48px; /* було 30px */
-  background: rgba(28, 28, 30, 0.75); /* ефект скла */
+  height: 48px;
+  background: rgba(28, 28, 30, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
@@ -43,7 +53,6 @@ header h1 {
   align-items: center;
   justify-content: center;
   background-color: var(--accent);
-  color: #fff;
   padding: 8px 12px;
   border-radius: 16px;
   text-decoration: none;
@@ -51,37 +60,40 @@ header h1 {
   width: 40px;
 }
 
-
-.call-btn:hover {
-  background-color: #e03128;
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px 16px;
 }
 
-section {
-  padding: 20px;
-  text-align: left;
+.content-grid h2 {
+  margin-top: 0;
 }
 
-.services ul, .locations ul {
+.content-grid ul {
   list-style: none;
-  padding: 0;
-  margin: 20px 0 0;
+  padding-left: 0;
 }
 
-.services li, .locations li {
+.content-grid li, .content-grid p {
   background-color: var(--gray);
-  margin: 10px auto;
-  max-width: 320px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  font-size: 16px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.map {
+  padding: 20px 16px;
 }
 
 .map-placeholder {
   background-color: var(--gray);
   padding: 60px;
   border-radius: 12px;
-  margin-top: 20px;
+  margin-top: 10px;
   color: #888;
+  text-align: center;
 }
 
 footer {
@@ -90,18 +102,11 @@ footer {
   text-align: center;
   color: #777;
 }
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-  box-sizing: border-box;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
 
-*, *::before, *::after {
-  box-sizing: inherit;
+/* Десктоп: 3 колонки */
+@media (min-width: 768px) {
+  .content-grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 40px;
+  }
 }
-
