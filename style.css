@@ -19,7 +19,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 80%;
+  width: 100%;
   height: 48px; /* було 30px */
   background: rgba(28, 28, 30, 0.75); /* ефект скла */
   backdrop-filter: blur(10px);
