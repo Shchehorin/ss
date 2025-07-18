@@ -1,137 +1,66 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Шиномонтаж 24/7</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цілодобовий Шиномонтаж Рівне</title>
+    <!-- Підключення Tailwind CSS для швидкого та адаптивного дизайну -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Підключення шрифту Inter з Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Підключення вашого кастомного CSS файлу -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Додаткові стилі для шрифту Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-<body>
-  <!-- 🔷 Шапка -->
-  <header>
-    <div class="site-title-box">
-      <span class="site-icon">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 8L5.72 10.27C5.9 10.42 6.13 10.5 6.36 10.5H17.64C17.87 10.5 18.1 10.42 18.28 10.27L21 8..." stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span class="site-title">Шиномонтаж 24/7</span>
-    </div>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
 
-    <a href="tel:+380991112233" class="call-btn" aria-label="Подзвонити">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M13.832 16.568a1 1..." stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-  </header>
+    <!-- Шапка сайту (Header) -->
+    <header class="bg-gray-800 p-4 shadow-lg rounded-b-xl mx-auto mt-4 w-[95%] max-w-7xl">
+        <nav class="flex flex-col sm:flex-row justify-between items-center">
+            <div class="text-2xl font-bold text-gray-50 mb-4 sm:mb-0">
+                <a href="#" class="hover:text-blue-400 transition-colors duration-300">Шиномонтаж Рівне</a>
+            </div>
+            <ul class="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 px-3 py-2 rounded-lg">Головна</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 px-3 py-2 rounded-lg">Послуги</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 px-3 py-2 rounded-lg">Про нас</a></li>
+                <li><a href="#" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 px-3 py-2 rounded-lg">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- 🔷 Контент -->
-  <section class="content-grid">
-    <div>
-      <h2>Наші послуги</h2>
-      <ul>
-        <li>🛞 Заміна шин</li>
-        <li>⚖️ Балансування</li>
-        <li>🧰 Ремонт проколів</li>
-        <li>🔁 Сезонна заміна</li>
-      </ul>
-    </div>
-    <div>
-  <h2>Наші точки</h2>
-  <ul class="locations-list">
-    <li>
-      <span class="location-address">вул. Шинна 1</span>
-      <span class="location-actions">
-        <a href="tel:+380991112201" class="plain-icon" title="Подзвонити">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.3545 22.2323C15.3344 21.7262 11.1989 20.2993 7.44976 16.5502C3.70065 12.8011 2.2738 8.66559 1.76767 6.6455C1.47681 5.48459 2.00058 4.36434 2.88869 3.72997L5.21694 2.06693C6.57922 1.09388 8.47432 1.42407 9.42724 2.80051L10.893 4.91776C11.5152 5.8165 11.3006 7.0483 10.4111 7.68365L9.24234 8.51849C9.41923 9.1951 9.96939 10.5846 11.6924 12.3076C13.4154 14.0306 14.8049 14.5807 15.4815 14.7576L16.3163 13.5888C16.9517 12.6994 18.1835 12.4847 19.0822 13.1069L21.1995 14.5727C22.5759 15.5257 22.9061 17.4207 21.933 18.783L20.27 21.1113C19.6356 21.9994 18.5154 22.5232 17.3545 22.2323Z"/>
-          </svg>
-        </a>
-        <a href="https://www.google.com/maps?q=Київ,+Шинна+1" class="plain-icon" title="Маршрут" target="_blank">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.7 15C4.03 15.63 3 16.52 3 17.5C3 19.43 7.03 21 12 21C16.97 21 21 19.43 21 17.5C21 16.52 19.97 15.63 18.3 15M12 9H12.01M18 9C18 13.06 13.5 15 12 18C10.5 15 6 13.06 6 9C6 5.69 8.69 3 12 3C15.31 3 18 5.69 18 9ZM13 9C13 9.55 12.55 10 12 10C11.45 10 11 9.55 11 9C11 8.45 11.45 8 12 8C12.55 8 13 8.45 13 9Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </span>
-    </li>
+    <!-- Основний контент (Main Content) -->
+    <main class="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 mt-8">
+        <section class="text-center bg-gray-800 p-8 rounded-2xl shadow-xl">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-400 mb-4">
+                Цілодобовий Шиномонтаж у Рівному
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-300 mb-8">
+                Швидко, якісно, 24/7. Ваша безпека на дорозі — наш пріоритет.
+            </p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                <a href="tel:+380XXXXXXXXX" class="block">Зателефонувати зараз</a>
+            </button>
+        </section>
 
-    <li>
-      <span class="location-address">вул. Резинова 5</span>
-      <span class="location-actions">
-        <a href="tel:+380991112202" class="plain-icon" title="Подзвонити">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.3545 22.2323C15.3344 21.7262 11.1989 20.2993 7.44976 16.5502C3.70065 12.8011 2.2738 8.66559 1.76767 6.6455C1.47681 5.48459 2.00058 4.36434 2.88869 3.72997L5.21694 2.06693C6.57922 1.09388 8.47432 1.42407 9.42724 2.80051L10.893 4.91776C11.5152 5.8165 11.3006 7.0483 10.4111 7.68365L9.24234 8.51849C9.41923 9.1951 9.96939 10.5846 11.6924 12.3076C13.4154 14.0306 14.8049 14.5807 15.4815 14.7576L16.3163 13.5888C16.9517 12.6994 18.1835 12.4847 19.0822 13.1069L21.1995 14.5727C22.5759 15.5257 22.9061 17.4207 21.933 18.783L20.27 21.1113C19.6356 21.9994 18.5154 22.5232 17.3545 22.2323Z"/>
-          </svg>
-        </a>
-        <a href="https://www.google.com/maps?q=Київ,+Резинова+5" class="plain-icon" title="Маршрут" target="_blank">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.7 15C4.03 15.63 3 16.52 3 17.5C3 19.43 7.03 21 12 21C16.97 21 21 19.43 21 17.5C21 16.52 19.97 15.63 18.3 15M12 9H12.01M18 9C18 13.06 13.5 15 12 18C10.5 15 6 13.06 6 9C6 5.69 8.69 3 12 3C15.31 3 18 5.69 18 9ZM13 9C13 9.55 12.55 10 12 10C11.45 10 11 9.55 11 9C11 8.45 11.45 8 12 8C12.55 8 13 8.45 13 9Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </span>
-    </li>
+        <!-- Тут будуть додаватися інші секції: послуги, відгуки, карта тощо -->
 
-    <li>
-      <span class="location-address">вул. Колісна 12</span>
-      <span class="location-actions">
-        <a href="tel:+380991112203" class="plain-icon" title="Подзвонити">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.3545 22.2323C15.3344 21.7262 11.1989 20.2993 7.44976 16.5502C3.70065 12.8011 2.2738 8.66559 1.76767 6.6455C1.47681 5.48459 2.00058 4.36434 2.88869 3.72997L5.21694 2.06693C6.57922 1.09388 8.47432 1.42407 9.42724 2.80051L10.893 4.91776C11.5152 5.8165 11.3006 7.0483 10.4111 7.68365L9.24234 8.51849C9.41923 9.1951 9.96939 10.5846 11.6924 12.3076C13.4154 14.0306 14.8049 14.5807 15.4815 14.7576L16.3163 13.5888C16.9517 12.6994 18.1835 12.4847 19.0822 13.1069L21.1995 14.5727C22.5759 15.5257 22.9061 17.4207 21.933 18.783L20.27 21.1113C19.6356 21.9994 18.5154 22.5232 17.3545 22.2323Z"/>
-          </svg>
-        </a>
-        <a href="https://www.google.com/maps?q=Київ,+Колісна+12" class="plain-icon" title="Маршрут" target="_blank">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.7 15C4.03 15.63 3 16.52 3 17.5C3 19.43 7.03 21 12 21C16.97 21 21 19.43 21 17.5C21 16.52 19.97 15.63 18.3 15M12 9H12.01M18 9C18 13.06 13.5 15 12 18C10.5 15 6 13.06 6 9C6 5.69 8.69 3 12 3C15.31 3 18 5.69 18 9ZM13 9C13 9.55 12.55 10 12 10C11.45 10 11 9.55 11 9C11 8.45 11.45 8 12 8C12.55 8 13 8.45 13 9Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </span>
-    </li>
+    </main>
 
-    <li>
-      <span class="location-address">вул. Дискова 7</span>
-      <span class="location-actions">
-        <a href="tel:+380991112204" class="plain-icon" title="Подзвонити">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.3545 22.2323C15.3344 21.7262 11.1989 20.2993 7.44976 16.5502C3.70065 12.8011 2.2738 8.66559 1.76767 6.6455C1.47681 5.48459 2.00058 4.36434 2.88869 3.72997L5.21694 2.06693C6.57922 1.09388 8.47432 1.42407 9.42724 2.80051L10.893 4.91776C11.5152 5.8165 11.3006 7.0483 10.4111 7.68365L9.24234 8.51849C9.41923 9.1951 9.96939 10.5846 11.6924 12.3076C13.4154 14.0306 14.8049 14.5807 15.4815 14.7576L16.3163 13.5888C16.9517 12.6994 18.1835 12.4847 19.0822 13.1069L21.1995 14.5727C22.5759 15.5257 22.9061 17.4207 21.933 18.783L20.27 21.1113C19.6356 21.9994 18.5154 22.5232 17.3545 22.2323Z"/>
-          </svg>
-        </a>
-        <a href="https://www.google.com/maps?q=Київ,+Дискова+7" class="plain-icon" title="Маршрут" target="_blank">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.7 15C4.03 15.63 3 16.52 3 17.5C3 19.43 7.03 21 12 21C16.97 21 21 19.43 21 17.5C21 16.52 19.97 15.63 18.3 15M12 9H12.01M18 9C18 13.06 13.5 15 12 18C10.5 15 6 13.06 6 9C6 5.69 8.69 3 12 3C15.31 3 18 5.69 18 9ZM13 9C13 9.55 12.55 10 12 10C11.45 10 11 9.55 11 9C11 8.45 11.45 8 12 8C12.55 8 13 8.45 13 9Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </span>
-    </li>
-  </ul>
-</div>
-    <div>
-      <h2>Контакти</h2>
-      <p>📞 <a href="tel:+380991112233">+38 (099) 111-22-33</a></p>
-      <p>📍 м. Київ, вул. Шинна 1</p>
-    </div>
-  </section>
+    <!-- Футер сайту (Footer) -->
+    <footer class="bg-gray-800 p-6 text-center text-gray-400 mt-8 rounded-t-xl mx-auto mb-4 w-[95%] max-w-7xl">
+        <p>&copy; 2025 Цілодобовий Шиномонтаж Рівне. Всі права захищені.</p>
+        <div class="flex justify-center gap-4 mt-3">
+            <a href="#" class="hover:text-blue-400 transition-colors duration-300">Політика конфіденційності</a>
+            <span class="text-gray-600">|</span>
+            <a href="#" class="hover:text-blue-400 transition-colors duration-300">Умови використання</a>
+        </div>
+    </footer>
 
-  <!-- 🔷 Запис + карта -->
-  <div class="bottom-grid">
-    <section class="booking">
-      <h2>Запис на шиномонтаж</h2>
-      <form>
-        <input type="text" placeholder="Ваше ім'я" required>
-        <input type="tel" placeholder="Номер телефону" required>
-        <textarea placeholder="Коментар (необов’язково)"></textarea>
-        <button type="submit">Записатись</button>
-      </form>
-    </section>
-
-    <section class="map">
-      <h2>Мапа</h2>
-      <div class="map-placeholder">Google карта тут</div>
-    </section>
-  </div>
-
-  <!-- 🔻 Футер -->
-  <footer>
-    <p>© 2025 Шиномонтаж 24/7</p>
-  </footer>
 </body>
 </html>
