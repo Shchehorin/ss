@@ -19,20 +19,17 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+<body class="bg-[var(--bg-color)] text-[var(--text-color)] min-h-screen flex flex-col">
 
     <!-- Container for the fixed header (Fixed Header Container) -->
     <div class="fixed top-0 left-0 w-full z-50 flex justify-center">
-        <!-- Site Header (Header) - ОНОВЛЕНО: ЗБІЛЬШЕНА ВИСОТА ТА ЕЛЕМЕНТИ -->
-        <!-- py-3 - збільшено вертикальний відступ -->
-        <header class="bg-gray-800/30 backdrop-blur-lg border border-gray-700/50 py-3 px-4 shadow-lg w-full">
+        <!-- Site Header (Header) -->
+        <header class="bg-[var(--gray)]/30 backdrop-blur-lg border border-[var(--gray)]/50 py-3 px-4 shadow-lg w-full">
             <nav class="flex justify-between items-center h-full">
-                <!-- Назва сайту в боксі "Шиномонтаж" - ОНОВЛЕНО -->
-                <!-- px-4 py-2 - збільшено відступи, text-base - збільшено розмір шрифту -->
-                <div class="bg-blue-600/20 text-blue-300 px-4 py-2 rounded-lg font-semibold text-base whitespace-nowrap flex items-center gap-2">
-                    <!-- Іконка колеса, що обертається - ОНОВЛЕНО -->
-                    <!-- w-5 h-5 - збільшено розмір іконки -->
-                    <svg class="w-5 h-5 text-blue-300 animate-spin-slow" viewBox="0 0 461.497 461.497" xml:space="preserve" fill="currentColor">
+                <!-- Назва сайту в боксі "Шиномонтаж 24/7" -->
+                <div class="bg-[var(--accent)]/20 text-[var(--text-color)] px-4 py-2 rounded-lg font-semibold text-base whitespace-nowrap flex items-center gap-2">
+                    <!-- Іконка колеса, що обертається -->
+                    <svg class="w-5 h-5 text-[var(--accent)] animate-spin-slow" viewBox="0 0 461.497 461.497" xml:space="preserve" fill="currentColor">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
                             <g>
                                 <g id="Layer_2_17_">
@@ -53,30 +50,27 @@
                     </svg>
                     Шиномонтаж 24/7
                 </div>
-                <!-- Icons on the right side - ОНОВЛЕНО -->
+                <!-- Icons on the right side -->
                 <div class="flex items-center gap-4">
-                    <!-- Instagram icon - ОНОВЛЕНО -->
-                    <!-- w-5 h-5 - збільшено розмір іконки -->
-                    <a href="https://instagram.com/your_instagram_handle" target="_blank" rel="noopener noreferrer" class="p-1 rounded-full bg-gray-700/50 hover:bg-blue-600/50 transition-colors duration-300 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-blue-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Instagram icon -->
+                    <a href="https://instagram.com/your_instagram_handle" target="_blank" rel="noopener noreferrer" class="p-1 rounded-full bg-[var(--gray)]/50 hover:bg-[var(--accent)]/50 transition-colors duration-300 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                         </svg>
                     </a>
-                    <!-- Phone icon - ОНОВЛЕНО -->
-                    <!-- w-5 h-5 - збільшено розмір іконки -->
-                    <a href="tel:+380XXXXXXXXX" class="p-1 rounded-full bg-gray-700/50 hover:bg-blue-600/50 transition-colors duration-300 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-blue-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Phone icon - ЗМІНЕНО: додано id="phoneIconLink" та href="#" -->
+                    <a href="#" id="phoneIconLink" class="p-1 rounded-full bg-[var(--gray)]/50 hover:bg-[var(--accent)]/50 transition-colors duration-300 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.3545 22.2323C15.3344 21.7262 11.1989 20.2993 7.44976 16.5502C3.70065 12.8011 2.2738 8.66559 1.76767 6.6455C1.47681 5.48459 2.00058 4.36434 2.88869 3.72997L5.21694 2.06693C6.57922 1.09388 8.47432 1.42407 9.42724 2.80051L10.893 4.91776C11.5152 5.8165 11.3006 7.0483 10.4111 7.68365L9.24234 8.51849C9.41923 9.1951 9.96939 10.5846 11.6924 12.3076C13.4154 14.0306 14.8049 14.5807 15.4815 14.7576L16.3163 13.5888C16.9517 12.6994 18.1835 12.4847 19.0822 13.1069L21.1995 14.5727C22.5759 15.5257 22.9061 17.4207 21.933 18.783L20.27 21.1113C19.6356 21.9994 18.5154 22.5232 17.3545 22.2323ZM8.86397 15.136C12.2734 18.5454 16.0358 19.8401 17.8405 20.2923C18.1043 20.3583 18.4232 20.2558 18.6425 19.9488L20.3056 17.6205C20.6299 17.1665 20.5199 16.5348 20.061 16.2171L17.9438 14.7513L17.0479 16.0056C16.6818 16.5182 16.0047 16.9202 15.2163 16.7501C14.2323 16.5378 12.4133 15.8569 10.2782 13.7218C8.1431 11.5867 7.46219 9.7677 7.24987 8.7837C7.07977 7.9953 7.48181 7.31821 7.99439 6.95208L9.24864 6.05618L7.78285 3.93893C7.46521 3.48011 6.83351 3.37005 6.37942 3.6944L4.05117 5.35744C3.74413 5.57675 3.64162 5.89565 3.70771 6.15943C4.15989 7.96418 5.45459 11.7266 8.86397 15.136Z" fill="currentColor"></path>
                             </g>
                         </svg>
                     </a>
-                    <!-- Appointment booking icon - ОНОВЛЕНО -->
-                    <!-- w-5 h-5 - збільшено розмір іконки -->
-                    <a href="#" class="p-1 rounded-full bg-gray-700/50 hover:bg-blue-600/50 transition-colors duration-300 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-blue-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Appointment booking icon -->
+                    <a href="#" class="p-1 rounded-full bg-[var(--gray)]/50 hover:bg-[var(--accent)]/50 transition-colors duration-300 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-[var(--accent)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
                                 <path d="M3 9H21M9 15L11 17L15 13M7 3V5M17 3V5M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </g>
@@ -87,33 +81,113 @@
         </header>
     </div>
 
-    <!-- Main content (Main Content) -->
+    <!-- Основний контент (Main Content) -->
     <main class="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-        <section class="text-center bg-gray-800 p-8 rounded-2xl shadow-xl">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-400 mb-4">
+        <section class="text-center bg-[var(--gray)] p-8 rounded-2xl shadow-xl">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-[var(--accent)] mb-4">
                 Цілодобовий Шиномонтаж у Рівному
             </h1>
-            <p class="text-lg sm:text-xl text-gray-300 mb-8">
+            <p class="text-lg sm:text-xl text-[var(--text-color)] mb-8">
                 Швидко, якісно, 24/7. Ваша безпека на дорозі — наш пріоритет.
             </p>
-            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+            <button class="bg-[var(--accent)] hover:bg-[var(--accent-darker)] text-[var(--text-color)] font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
                 <a href="tel:+380XXXXXXXXX" class="block">Зателефонувати зараз</a>
             </button>
         </section>
 
-        <!-- Other sections will be added here: services, testimonials, map, etc. -->
+        <!-- Тут будуть додаватися інші секції: послуги, відгуки, карта тощо -->
 
     </main>
 
-    <!-- Site Footer (Footer) -->
-    <footer class="bg-gray-800 p-6 text-center text-gray-400 mt-8 rounded-t-xl mx-auto mb-4 w-[95%] max-w-7xl">
+    <!-- Футер сайту (Footer) -->
+    <footer class="bg-[var(--gray)] p-6 text-center text-[var(--text-color)] mt-8 rounded-t-xl mx-auto mb-4 w-[95%] max-w-7xl">
         <p>&copy; 2025 Цілодобовий Шиномонтаж Рівне. Всі права захищені.</p>
         <div class="flex justify-center gap-4 mt-3">
-            <a href="#" class="hover:text-blue-400 transition-colors duration-300">Політика конфіденційності</a>
+            <a href="#" class="hover:text-[var(--accent)] transition-colors duration-300">Політика конфіденційності</a>
             <span class="text-gray-600">|</span>
-            <a href="#" class="hover:text-blue-400 transition-colors duration-300">Умови використання</a>
+            <a href="#" class="hover:text-[var(--accent)] transition-colors duration-300">Умови використання</a>
         </div>
     </footer>
 
+    <!-- Pop-up Modal for Phone Options -->
+    <div id="phoneModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-[var(--gray)] border border-[var(--gray)]/50 p-6 rounded-2xl shadow-2xl w-11/12 max-w-sm transform scale-95 transition-transform duration-300">
+            <h3 class="text-xl font-semibold text-[var(--text-color)] mb-6 text-center">Виберіть спосіб зв'язку</h3>
+            <div class="flex flex-col gap-4">
+                <a href="tel:+380XXXXXXXXX" class="modal-button bg-[var(--accent)] hover:bg-[var(--accent-darker)] text-[var(--text-color)] py-3 px-4 rounded-xl text-center font-semibold transition-colors duration-300">
+                    Зателефонувати
+                </a>
+                <a href="viber://chat?number=+380XXXXXXXXX" class="modal-button bg-[var(--gray)]/70 hover:bg-[var(--accent)]/50 text-[var(--text-color)] py-3 px-4 rounded-xl text-center font-semibold transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                    Написати у Viber
+                </a>
+                <a href="https://t.me/your_telegram_username" class="modal-button bg-[var(--gray)]/70 hover:bg-[var(--accent)]/50 text-[var(--text-color)] py-3 px-4 rounded-xl text-center font-semibold transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                    Написати в Telegram
+                </a>
+            </div>
+            <button id="closeModal" class="mt-6 w-full bg-transparent border border-[var(--text-color)]/30 text-[var(--text-color)] py-3 px-4 rounded-xl text-center font-semibold hover:bg-[var(--gray)]/50 transition-colors duration-300">
+                Скасувати
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript для обробки модального вікна -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const phoneIconLink = document.getElementById('phoneIconLink');
+            const phoneModal = document.getElementById('phoneModal');
+            const closeModalButton = document.getElementById('closeModal');
+
+            // Функція для показу модального вікна
+            function showModal() {
+                phoneModal.classList.remove('hidden');
+                // Затримка для плавного переходу (opacity та scale)
+                setTimeout(() => {
+                    phoneModal.classList.add('opacity-100');
+                    phoneModal.querySelector('div').classList.remove('scale-95');
+                    phoneModal.querySelector('div').classList.add('scale-100');
+                }, 10);
+            }
+
+            // Функція для приховування модального вікна
+            function hideModal() {
+                phoneModal.classList.remove('opacity-100');
+                phoneModal.querySelector('div').classList.remove('scale-100');
+                phoneModal.querySelector('div').classList.add('scale-95');
+                // Затримка, щоб дочекатися закінчення анімації перед приховуванням
+                setTimeout(() => {
+                    phoneModal.classList.add('hidden');
+                }, 300);
+            }
+
+            // Обробник події для натискання на іконку телефону
+            if (phoneIconLink) {
+                phoneIconLink.addEventListener('click', (e) => {
+                    e.preventDefault(); // Запобігаємо стандартній поведінці посилання
+                    showModal();
+                });
+            }
+
+            // Обробник події для кнопки "Скасувати"
+            if (closeModalButton) {
+                closeModalButton.addEventListener('click', hideModal);
+            }
+
+            // Обробник події для кліку за межами контенту модального вікна (на оверлеї)
+            if (phoneModal) {
+                phoneModal.addEventListener('click', (e) => {
+                    if (e.target === phoneModal) { // Перевіряємо, чи клік був саме на оверлеї
+                        hideModal();
+                    }
+                });
+            }
+
+            // Примітки:
+            // - Замініть "+380XXXXXXXXX" на ваш реальний номер телефону.
+            // - Замініть "your_telegram_username" на ваш реальний нікнейм в Telegram.
+            // - Для Viber використовується deep link, який намагається відкрити додаток.
+            //   Якщо додаток не встановлено, це може не спрацювати або відкрити порожню сторінку.
+            //   У цьому випадку можна розглянути посилання на веб-версію Viber або інструкцію.
+        });
+    </script>
 </body>
 </html>
