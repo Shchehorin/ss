@@ -58,3 +58,18 @@ nav a::before {
 nav a:hover::before {
     transform: translateX(0);
 }
+
+/* Анімація для повільного обертання колеса */
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 10s linear infinite; /* 10 секунд, лінійна, нескінченна */
+    transform-origin: center; /* Важливо для правильного обертання */
+}
