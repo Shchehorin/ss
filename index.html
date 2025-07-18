@@ -38,11 +38,35 @@
     </div>
     <div>
       <h2>Наші точки</h2>
-      <ul>
-        <li>📍 Локація 1</li>
-        <li>📍 Локація 2</li>
-        <li>📍 Локація 3</li>
-        <li>📍 Локація 4</li>
+      <ul class="locations-list">
+        <li>
+          📍 вул. Шинна 1
+          <span class="location-actions">
+            <a href="tel:+380991112201" class="icon-btn" title="Подзвонити">📞</a>
+            <a href="https://www.google.com/maps?q=Київ,+Шинна+1" target="_blank" class="icon-btn" title="Маршрут">🧭</a>
+          </span>
+        </li>
+        <li>
+          📍 вул. Резинова 5
+          <span class="location-actions">
+            <a href="tel:+380991112202" class="icon-btn" title="Подзвонити">📞</a>
+            <a href="https://www.google.com/maps?q=Київ,+Резинова+5" target="_blank" class="icon-btn" title="Маршрут">🧭</a>
+          </span>
+        </li>
+        <li>
+          📍 вул. Колісна 12
+          <span class="location-actions">
+            <a href="tel:+380991112203" class="icon-btn" title="Подзвонити">📞</a>
+            <a href="https://www.google.com/maps?q=Київ,+Колісна+12" target="_blank" class="icon-btn" title="Маршрут">🧭</a>
+          </span>
+        </li>
+        <li>
+          📍 вул. Дискова 7
+          <span class="location-actions">
+            <a href="tel:+380991112204" class="icon-btn" title="Подзвонити">📞</a>
+            <a href="https://www.google.com/maps?q=Київ,+Дискова+7" target="_blank" class="icon-btn" title="Маршрут">🧭</a>
+          </span>
+        </li>
       </ul>
     </div>
     <div>
@@ -52,22 +76,23 @@
     </div>
   </section>
 
-  <!-- 🧾 Форма запису -->
-  <section class="booking">
-    <h2>Запис на шиномонтаж</h2>
-    <form>
-      <input type="text" placeholder="Ваше ім'я" required>
-      <input type="tel" placeholder="Номер телефону" required>
-      <textarea placeholder="Коментар (необов’язково)"></textarea>
-      <button type="submit">Записатись</button>
-    </form>
-  </section>
+  <!-- 🔷 Запис + карта -->
+  <div class="bottom-grid">
+    <section class="booking">
+      <h2>Запис на шиномонтаж</h2>
+      <form>
+        <input type="text" placeholder="Ваше ім'я" required>
+        <input type="tel" placeholder="Номер телефону" required>
+        <textarea placeholder="Коментар (необов’язково)"></textarea>
+        <button type="submit">Записатись</button>
+      </form>
+    </section>
 
-  <!-- 🗺️ Карта -->
-  <section class="map">
-    <h2>Мапа</h2>
-    <div class="map-placeholder">Google карта тут</div>
-  </section>
+    <section class="map">
+      <h2>Мапа</h2>
+      <div class="map-placeholder">Google карта тут</div>
+    </section>
+  </div>
 
   <!-- 🔻 Футер -->
   <footer>
@@ -77,4 +102,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
