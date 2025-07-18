@@ -3,15 +3,6 @@
   або перевизначатимуть стилі Tailwind CSS.
 */
 
-/* Визначення CSS-змінних для кольорів */
-:root {
-  --bg-color: #1c1c1e; /* Темний фон для body */
-  --text-color: #fff;  /* Білий текст */
-  --accent: #ff3b30;   /* Акцентний червоний колір (як в iOS) */
-  --accent-darker: #cc2a22; /* Темніший відтінок акцентного для hover */
-  --gray: #2c2c2e;     /* Темно-сірий для фонових блоків */
-}
-
 /* Додаткові стилі для iOS-подібних тіней та округлень */
 .shadow-lg {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
@@ -59,7 +50,7 @@ nav a::before {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--accent); /* Використовуємо акцентний колір */
+    background-color: #60A5FA; /* Колір підсвічування */
     transform: translateX(-100%);
     transition: transform 0.3s ease-out;
 }
