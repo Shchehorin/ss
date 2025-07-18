@@ -1,3 +1,2 @@
-function sayHello() {
-  document.getElementById("output").textContent = "Вітаю! Сайт працює.";
-}
+// Можна буде додати інтерактивні функції пізніше
+console.log("Шиномонтаж 24/7 — темна тема активна");
