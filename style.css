@@ -94,17 +94,26 @@ header {
 /* Локації з кнопками */
 .locations-list li {
   background-color: rgba(255, 255, 255, 0.05);
-  padding: 12px;
+  padding: 12px 14px;
   margin-bottom: 10px;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
+/* Назва локації зліва */
+.locations-list li::before {
+  content: "📍";
+  margin-right: 6px;
+}
+
+/* Блок з кнопками справа */
 .location-actions {
   display: flex;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .icon-btn {
@@ -118,6 +127,8 @@ header {
   align-items: center;
   justify-content: center;
   transition: background-color 0.2s;
+  min-width: 32px;
+  height: 32px;
 }
 
 .icon-btn:hover {
