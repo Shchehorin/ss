@@ -73,3 +73,10 @@ nav a:hover::before {
     animation: spin-slow 10s linear infinite; /* 10 секунд, лінійна, нескінченна */
     transform-origin: center; /* Важливо для правильного обертання */
 }
+/* Вимкнення всіх тіней у секції #locations */
+#locations .shadow,
+#locations .shadow-md,
+#locations .shadow-lg,
+#locations .shadow-xl {
+    box-shadow: none !important;
+}
