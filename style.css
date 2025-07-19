@@ -1,55 +1,80 @@
-/* Базовий скидання стилів та типографія */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ... Ваш існуючий CSS ... */
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #1a1a1a; /* Темний фон */
+    background-color: #1a1a1a; /* Темний фон, якщо немає фонового зображення */
     color: #f0f0f0; /* Світлий колір тексту */
     line-height: 1.6;
 }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
+/* Додамо фонове зображення для ефекту скляного */
+body.has-bg {
+    background-image: url('https://via.placeholder.com/1920x1080/222222/555555?text=Background'); /* Замініть на ваше зображення */
+    background-size: cover;
+    background-attachment: fixed; /* Щоб фон не прокручувався разом з вмістом */
+    background-position: center;
 }
 
-/* Заголовок */
+
+/* Header */
 header {
-    background-color: #282828; /* Трохи світліший темний для заголовка */
-    padding: 15px 0;
-    border-bottom: 1px solid #333;
+    /* Видаляємо background-color звідси, він буде у pseudo-елементі */
+    padding: 0; /* Прибираємо внутрішні відступи, висоту встановимо через min-height */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Тонша межа для скляного ефекту */
+    position: sticky; /* Щоб хедер залишався зверху під час прокрутки */
+    top: 0;
+    z-index: 1000; /* Переконайтеся, що він над іншими елементами */
+    min-height: 40px; /* Встановлюємо мінімальну висоту */
+    display: flex; /* Використовуємо flexbox для центрування вмісту по вертикалі */
+    align-items: center; /* Центруємо по вертикалі */
 }
+
+/* Створюємо псевдоелемент для ефекту "скла" */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(40, 40, 40, 0.7); /* Напівпрозорий темний фон */
+    backdrop-filter: blur(8px); /* Ефект розмиття */
+    -webkit-backdrop-filter: blur(8px); /* Для підтримки Safari */
+    z-index: -1; /* Поміщаємо під вміст хедера */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Легкий контур */
+}
+
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%; /* Забезпечуємо, що вміст хедера розтягується на всю ширину контейнера */
+    padding: 0 20px; /* Додаємо горизонтальні відступи, оскільки padding з header було видалено */
+    max-width: 900px; /* Зберігаємо max-width для вмісту, як і для основного контейнера */
+    margin: 0 auto; /* Центруємо вміст хедера */
+    min-height: 40px; /* Забезпечуємо висоту для вмісту хедера */
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 24px;
+    gap: 8px; /* Трохи зменшимо gap для тоншого хедера */
+    font-size: 20px; /* Зменшимо розмір шрифту */
     font-weight: bold;
     color: #e0e0e0;
 }
 
 .logo i {
     color: #ff4d4d; /* Червоний акцент для іконки шини */
-    font-size: 30px;
+    font-size: 24px; /* Зменшимо розмір іконки */
 }
 
 nav a {
     color: #e0e0e0;
     text-decoration: none;
-    font-size: 22px;
-    margin-left: 20px;
+    font-size: 20px; /* Зменшимо розмір іконок навігації */
+    margin-left: 15px; /* Трохи зменшимо відступ */
     transition: color 0.3s ease;
 }
 
@@ -57,85 +82,29 @@ nav a:hover {
     color: #ff4d4d; /* Червоний акцент при наведенні */
 }
 
-/* Основний контент - Локації */
-.locations {
-    padding: 40px 0;
-}
-
-.locations h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #f0f0f0;
-    font-size: 28px;
-}
-
-.location-item {
-    background-color: #282828; /* Такий самий, як заголовок, послідовний темний фон */
-    margin-bottom: 15px;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease-in-out;
-}
-
-.location-item:hover {
-    transform: translateY(-5px); /* Легкий ефект підйому при наведенні */
-}
-
-.address-info h3 {
-    margin: 0;
-    font-size: 20px;
-    color: #ff4d4d; /* Червоний акцент для адрес */
-}
-
-.address-info p {
-    margin: 5px 0 0;
-    color: #b0b0b0;
-    font-size: 16px;
-}
-
-.contact-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.contact-icons a {
-    color: #e0e0e0;
-    font-size: 24px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-icons a:hover {
-    color: #ff4d4d; /* Червоний акцент при наведенні */
-}
-
-/* Нижній колонтитул */
-footer {
-    background-color: #282828;
-    color: #b0b0b0;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 30px;
-    border-top: 1px solid #333;
-}
+/* ... Ваш існуючий CSS для main, locations, footer ... */
 
 /* Адаптивні налаштування */
 @media (max-width: 600px) {
     .header-content {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row; /* Залишаємо в ряд на мобільному, щоб був на всю ширину */
+        justify-content: space-between; /* Рознесемо елементи по краях */
+        align-items: center; /* Центруємо по вертикалі */
+        padding: 0 15px; /* Зменшимо горизонтальні відступи на мобільному */
+        min-height: 40px; /* Забезпечуємо висоту */
     }
 
-    nav {
-        margin-top: 10px;
+    .logo {
+        font-size: 18px; /* Ще трохи зменшимо логотип на мобільному */
+    }
+
+    .logo i {
+        font-size: 20px; /* Ще трохи зменшимо іконку логотипу на мобільному */
     }
 
     nav a {
-        margin: 0 10px;
+        font-size: 18px; /* Ще трохи зменшимо іконки навігації на мобільному */
+        margin-left: 10px; /* Зменшимо відступ на мобільному */
     }
 
     .location-item {
