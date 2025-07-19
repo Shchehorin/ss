@@ -1,20 +1,9 @@
-/* === Стилі кнопок у стилі iOS === */
-button {
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Плавна анімація */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Початкова тінь кнопки */
-}
-
-button:hover {
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Тінь при наведенні */
-}
-
 /* === Підсвітка посилань у навігації === */
 nav a {
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Легка тінь */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
-
 nav a::before {
     content: '';
     position: absolute;
@@ -22,16 +11,15 @@ nav a::before {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #ff3b30; /* Акцентна червона лінія */
-    transform: translateX(-100%); /* Початкове положення */
-    transition: transform 0.3s ease-out; /* Анімація підсвітки */
+    background-color: #ff3b30;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
 }
-
 nav a:hover::before {
-    transform: translateX(0); /* Поява лінії при наведенні */
+    transform: translateX(0);
 }
 
-/* === Анімація повільного обертання для SVG-іконки (колесо) === */
+/* === Анімація повільного обертання колеса === */
 @keyframes spin-slow {
     from {
         transform: rotate(0deg);
@@ -40,38 +28,7 @@ nav a:hover::before {
         transform: rotate(360deg);
     }
 }
-
 .animate-spin-slow {
-    animation: spin-slow 10s linear infinite; /* Безперервне обертання */
-    transform-origin: center; /* Центр обертання */
-}
-
-/* === Вимкнення тіней у секції локацій === */
-#locations .shadow,
-#locations .shadow-md,
-#locations .shadow-lg,
-#locations .shadow-xl,
-#locations .shadow-2xl,
-#locations .shadow-inner {
-    box-shadow: none !important; /* Заборонити всі тіні */
-}
-
-/* === Повне видалення верхніх відступів у body, main, #locations === */
-body,
-main,
-#locations {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
-
-/* === Прибираємо внутрішні відступи у контейнері main (на всякий випадок) === */
-main.container {
-    padding: 0 !important;
-}
-
-/* === Прибираємо вертикальні відступи у секції локацій === */
-#locations {
-    padding-block-start: 0 !important;
-    padding-block-end: 0 !important;
-    margin-block-start: 0 !important;
+    animation: spin-slow 10s linear infinite;
+    transform-origin: center;
 }
