@@ -1,39 +1,151 @@
-/* === Підсвітка посилань у навігації === */
-nav a {
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-nav a::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #ff3b30;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-out;
-}
-nav a:hover::before {
-    transform: translateX(0);
+/* Базовий скидання стилів та типографія */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* === Анімація повільного обертання колеса === */
-@keyframes spin-slow {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #1a1a1a; /* Темний фон */
+    color: #f0f0f0; /* Світлий колір тексту */
+    line-height: 1.6;
 }
-.animate-spin-slow {
-    animation: spin-slow 10s linear infinite;
-    transform-origin: center;
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+/* Заголовок */
+header {
+    background-color: #282828; /* Трохи світліший темний для заголовка */
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.logo i {
+    color: #ff4d4d; /* Червоний акцент для іконки шини */
+    font-size: 30px;
+}
+
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 22px;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff4d4d; /* Червоний акцент при наведенні */
+}
+
+/* Основний контент - Локації */
+.locations {
+    padding: 40px 0;
+}
+
+.locations h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+    font-size: 28px;
+}
+
+.location-item {
+    background-color: #282828; /* Такий самий, як заголовок, послідовний темний фон */
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.location-item:hover {
+    transform: translateY(-5px); /* Легкий ефект підйому при наведенні */
+}
+
+.address-info h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #ff4d4d; /* Червоний акцент для адрес */
+}
+
+.address-info p {
+    margin: 5px 0 0;
+    color: #b0b0b0;
+    font-size: 16px;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.contact-icons a {
+    color: #e0e0e0;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-icons a:hover {
+    color: #ff4d4d; /* Червоний акцент при наведенні */
+}
+
+/* Нижній колонтитул */
+footer {
+    background-color: #282828;
+    color: #b0b0b0;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 1px solid #333;
+}
+
+/* Адаптивні налаштування */
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 0 10px;
+    }
+
+    .location-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .contact-icons {
+        width: 100%;
+        justify-content: flex-end; /* Вирівнюємо іконки праворуч на менших екранах */
+    }
 }
