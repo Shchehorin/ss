@@ -99,56 +99,88 @@
 
     <!-- Секція: Наші локації (з фоном на всю ширину) -->
     <section id="locations" class="bg-custom-gray py-8 w-full">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <!-- Внутрішній контейнер для вирівнювання контенту -->
-            <h2 class="text-3xl sm:text-4xl font-bold text-custom-accent mb-8 text-center">Наші Локації</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
-                <!-- Локація 1 -->
-                <div class="bg-custom-gray p-6 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform duration-300 hover:scale-[1.02]">
-                    <svg class="w-8 h-8 text-custom-accent mb-4" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                    </svg>
-                    <h3 class="text-xl font-semibold text-custom-text mb-2">Шиномонтаж на вул. Прикладній, 1</h3>
-                    <p class="text-custom-text/80 mb-4">Працюємо 24/7</p>
-                    <a href="tel:+380971112233" class="bg-custom-accent hover:bg-custom-accent-darker text-custom-text font-bold py-2 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105">
-                        +380 97 111 2233
-                    </a>
-                </div>
-                <!-- Локація 2 -->
-                <div class="bg-custom-gray p-6 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform duration-300 hover:scale-[1.02]">
-                    <svg class="w-8 h-8 text-custom-accent mb-4" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                    </svg>
-                    <h3 class="text-xl font-semibold text-custom-text mb-2">Шиномонтаж на вул. Зразковій, 5</h3>
-                    <p class="text-custom-text/80 mb-4">Працюємо 24/7</p>
-                    <a href="tel:+380964445566" class="bg-custom-accent hover:bg-custom-accent-darker text-custom-text font-bold py-2 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105">
-                        +380 96 444 5566
-                    </a>
-                </div>
-                <!-- Локація 3 -->
-                <div class="bg-custom-gray p-6 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform duration-300 hover:scale-[1.02]">
-                    <svg class="w-8 h-8 text-custom-accent mb-4" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                    </svg>
-                    <h3 class="text-xl font-semibold text-custom-text mb-2">Шиномонтаж на вул. Тестовій, 10</h3>
-                    <p class="text-custom-text/80 mb-4">Працюємо 24/7</p>
-                    <a href="tel:+380677778899" class="bg-custom-accent hover:bg-custom-accent-darker text-custom-text font-bold py-2 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105">
-                        +380 67 777 8899
-                    </a>
-                </div>
-                <!-- Локація 4 -->
-                <div class="bg-custom-gray p-6 rounded-2xl shadow-xl flex flex-col items-center text-center transition-transform duration-300 hover:scale-[1.02]">
-                    <svg class="w-8 h-8 text-custom-accent mb-4" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                    </svg>
-                    <h3 class="text-xl font-semibold text-custom-text mb-2">Шиномонтаж на вул. Випробувальній, 15</h3>
-                    <p class="text-custom-text/80 mb-4">Працюємо 24/7</p>
-                    <a href="tel:+380631234567" class="bg-custom-accent hover:bg-custom-accent-darker text-custom-text font-bold py-2 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105">
-                        +380 63 123 4567
-                    </a>
-                </div>
-            </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl sm:text-4xl font-bold text-custom-accent mb-6 text-center">Наші Локації</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+      <!-- Локація -->
+      <div class="bg-custom-gray p-4 rounded-xl shadow-md flex justify-between items-center text-sm">
+        <div class="text-left">
+          <h3 class="text-base font-semibold text-custom-text mb-1">вул. Прикладна, 1</h3>
+          <p class="text-custom-text/60">Працюємо 24/7</p>
         </div>
-    </section>
+        <div class="flex gap-2">
+          <a href="tel:+380971112233" class="hover:opacity-80">
+            <svg class="w-5 h-5 text-custom-accent" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77..." />
+            </svg>
+          </a>
+          <a href="https://maps.google.com?q=вул.+Прикладна,+1" target="_blank" class="hover:opacity-80">
+            <svg class="w-5 h-5 text-custom-accent" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3..." />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Дублюй блок для кожної локації -->
+      <!-- вул. Зразкова, 5 -->
+      <div class="bg-custom-gray p-4 rounded-xl shadow-md flex justify-between items-center text-sm">
+        <div class="text-left">
+          <h3 class="text-base font-semibold text-custom-text mb-1">вул. Зразкова, 5</h3>
+          <p class="text-custom-text/60">Працюємо 24/7</p>
+        </div>
+        <div class="flex gap-2">
+          <a href="tel:+380964445566" class="hover:opacity-80">
+            <!-- Телефон -->
+            <svg class="w-5 h-5 text-custom-accent" fill="currentColor" viewBox="0 0 16 16">
+              <path d="..." />
+            </svg>
+          </a>
+          <a href="https://maps.google.com?q=вул.+Зразкова,+5" target="_blank" class="hover:opacity-80">
+            <!-- Локація -->
+            <svg class="w-5 h-5 text-custom-accent" fill="currentColor" viewBox="0 0 16 16">
+              <path d="..." />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- вул. Тестова, 10 -->
+      <div class="bg-custom-gray p-4 rounded-xl shadow-md flex justify-between items-center text-sm">
+        <div class="text-left">
+          <h3 class="text-base font-semibold text-custom-text mb-1">вул. Тестова, 10</h3>
+          <p class="text-custom-text/60">Працюємо 24/7</p>
+        </div>
+        <div class="flex gap-2">
+          <a href="tel:+380677778899" class="hover:opacity-80">
+            <svg class="w-5 h-5 text-custom-accent" fill="currentColor" viewBox="0 0 16 16"><path d="..." /></svg>
+          </a>
+          <a href="https://maps.google.com?q=вул.+Тестова,+10" target="_blank" class="hover:opacity-80">
+            <svg class="w-5 h-5 text-custom-accent" fill="currentColor" viewBox="0 0 16 16"><path d="..." /></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- вул. Випробувальна, 15 -->
+      <div class="bg-custom-gray p-4 rounded-xl shadow-md flex justify-between items-center text-sm">
+        <div class="text-left">
+          <h3 class="text-base font-semibold text-custom-text mb-1">вул. Випробувальна, 15</h3>
+          <p class="text-custom-text/60">Працюємо 24/7</p>
+        </div>
+        <div class="flex gap-2">
+          <a href="tel:+380631234567" class="hover:opacity-80">
+            <svg class="w-5 h-5 text-custom-accent" fill="currentColor" viewBox="0 0 16 16"><path d="..." /></svg>
+          </a>
+          <a href="https://maps.google.com?q=вул.+Випробувальна,+15" target="_blank" class="hover:opacity-80">
+            <svg class="w-5 h-5 text-custom-accent" fill="currentColor" viewBox="0 0 16 16"><path d="..." /></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- Футер сайту (Footer) -->
     <footer class="bg-custom-gray p-6 text-center text-custom-text mt-8 rounded-t-xl mx-auto mb-4 w-[95%] max-w-7xl">
