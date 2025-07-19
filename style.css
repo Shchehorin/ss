@@ -54,3 +54,16 @@ nav a:hover::before {
 #locations .shadow-inner {
     box-shadow: none !important;
 }
+/* Прибираємо усі верхні відступи над секцією локацій */
+body,
+main,
+#locations {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Додатково: мінімізуємо внутрішній відступ у самій секції */
+#locations {
+    padding-block-start: 0 !important;
+    margin-block-start: 0 !important;
+}
