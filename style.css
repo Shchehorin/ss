@@ -32,3 +32,8 @@ nav a:hover::before {
     animation: spin-slow 10s linear infinite;
     transform-origin: center;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
