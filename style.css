@@ -1,4 +1,9 @@
-/* ... Ваш існуючий CSS ... */
+/* Basic Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -9,16 +14,21 @@ body {
 
 /* Додамо фонове зображення для ефекту скляного */
 body.has-bg {
-    background-image: url('https://via.placeholder.com/1920x1080/222222/555555?text=Background'); /* Замініть на ваше зображення */
+    /* Замініть 'https://via.placeholder.com/1920x1080/222222/555555?text=Background' на URL вашого зображення! */
+    background-image: url('https://via.placeholder.com/1920x1080/222222/555555?text=Background');
     background-size: cover;
     background-attachment: fixed; /* Щоб фон не прокручувався разом з вмістом */
     background-position: center;
 }
 
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
 /* Header */
 header {
-    /* Видаляємо background-color звідси, він буде у pseudo-елементі */
     padding: 0; /* Прибираємо внутрішні відступи, висоту встановимо через min-height */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Тонша межа для скляного ефекту */
     position: sticky; /* Щоб хедер залишався зверху під час прокрутки */
@@ -82,9 +92,73 @@ nav a:hover {
     color: #ff4d4d; /* Червоний акцент при наведенні */
 }
 
-/* ... Ваш існуючий CSS для main, locations, footer ... */
+/* Main Content - Locations */
+.locations {
+    padding: 40px 0;
+}
 
-/* Адаптивні налаштування */
+.locations h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+    font-size: 28px;
+}
+
+.location-item {
+    background-color: #282828; /* Темний фон */
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.location-item:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.address-info h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #ff4d4d; /* Red accent for addresses */
+}
+
+.address-info p {
+    margin: 5px 0 0;
+    color: #b0b0b0;
+    font-size: 16px;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.contact-icons a {
+    color: #e0e0e0;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-icons a:hover {
+    color: #ff4d4d; /* Red accent on hover */
+}
+
+/* Footer */
+footer {
+    background-color: #282828;
+    color: #b0b0b0;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 1px solid #333;
+}
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
     .header-content {
         flex-direction: row; /* Залишаємо в ряд на мобільному, щоб був на всю ширину */
