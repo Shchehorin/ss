@@ -178,15 +178,15 @@ function initUpgrade() {
 /* ---------- sound ---------- */
 let actx; const SFX = { buf: {}, loading: false };
 const SFX_NAMES = ["tick", "click", "select", "whoosh", "win", "lose", "caseopen", "reveal", "coin", "contract", "ambient"];
-// quiet looping drone; starts after the first user gesture and follows the sound toggle
-function syncAmbient() {
-  if (!actx || !SFX.buf.ambient) return;
-  if (!SFX.amb) {
-    const s = actx.createBufferSource(), g = actx.createGain();
-    s.buffer = SFX.buf.ambient; s.loop = true; g.gain.value = 0; s.connect(g); g.connect(SFX.out); s.start();
-    SFX.amb = g;
-  }
-  SFX.amb.gain.setTargetAtTime(U.sound ? 0.16 : 0, actx.currentTime, 0.8);
+// drone that swells and rises in pitch while the wheel spins, then fades out
+function spinHum(dur) {
+  if (!U.sound || !audio() || !SFX.buf.ambient) return;
+  const t = actx.currentTime, s = actx.createBufferSource(), g = actx.createGain();
+  s.buffer = SFX.buf.ambient; s.loop = true;
+  s.playbackRate.setValueAtTime(0.85, t); s.playbackRate.linearRampToValueAtTime(1.15, t + dur);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.32, t + Math.min(1.2, dur * 0.3));
+  g.gain.setValueAtTime(0.32, t + dur - 0.2); g.gain.linearRampToValueAtTime(0, t + dur + 0.9);
+  s.connect(g); g.connect(SFX.out); s.start(t); s.stop(t + dur + 1);
 }
 function audio() {
   if (!actx) {
@@ -197,7 +197,7 @@ function audio() {
   if (actx.state === "suspended") actx.resume();
   if (!SFX.loading) {
     SFX.loading = true;
-    SFX_NAMES.forEach((n) => fetch(`sfx/${n}.wav`).then((r) => r.arrayBuffer()).then((b) => actx.decodeAudioData(b)).then((d) => { SFX.buf[n] = d; if (n === "ambient") syncAmbient(); }).catch(() => {}));
+    SFX_NAMES.forEach((n) => fetch(`sfx/${n}.wav`).then((r) => r.arrayBuffer()).then((b) => actx.decodeAudioData(b)).then((d) => (SFX.buf[n] = d)).catch(() => {}));
   }
   return actx;
 }
@@ -227,7 +227,6 @@ function playTicks(count, dur, x1, y1, x2, y2) {
 }
 document.addEventListener("click", (e) => {
   if (U.sound) audio();
-  if (e.target.closest("#snd")) setTimeout(() => { if (U.sound) audio(); syncAmbient(); });
   if (e.target.closest(".skin:not(.static)")) play("select", { rate: 0.95 + Math.random() * 0.1, vol: 0.7 });
   else if (e.target.closest("nav a, .chip, .mini, .tabs button, .mult button")) play("click", { vol: 0.6 });
 }, true);
@@ -245,7 +244,7 @@ function doUpgrade() {
   ptr.style.setProperty("--spin", dur + "s");
   ptr.classList.add("spin");
   ptr.style.transform = `rotate(${U.angle}deg)`;
-  play("whoosh", { vol: 0.8 });
+  play("whoosh", { vol: 0.8 }); spinHum(dur);
   playTicks(Math.round((U.angle - prevAngle) / 9), dur, 0.12, 0.7, 0.1, 1);
   const given = S.inv.filter((x) => U.sel.has(x.uid));
   setTimeout(() => {
