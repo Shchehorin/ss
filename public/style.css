@@ -175,7 +175,7 @@ input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 
   --rc: #8847ff; position: relative; min-width: 0; min-height: 169px; display: flex; flex-direction: column;   padding: 0 12px 11px;
   border: 1px solid transparent; border-radius: 10px; cursor: pointer; transition: transform .12s, filter .12s;
   background:
-    linear-gradient(180deg, transparent 12%, color-mix(in srgb, var(--rc) 19%, transparent)),
+    linear-gradient(180deg, transparent 12%, color-mix(in srgb, var(--rc) 11%, transparent)),
     linear-gradient(180deg, rgba(255, 255, 255, .065), rgba(255, 255, 255, .02));
 }
 .skin::before {
@@ -184,7 +184,7 @@ input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
 }
-.skin:hover { transform: translateY(-2px); filter: brightness(1.12); }
+.skin:hover { transform: translateY(-2px); filter: brightness(1.04); }
 .skin.sel { box-shadow: 0 0 0 2px var(--vio) inset, 0 0 22px rgba(240, 169, 58, .3); }
 .skin .im { flex: 1; min-height: 0; display: grid; place-items: center; padding-top: 6px; }
 .skin .im svg, .skin .im img { width: 116px; height: 70px; object-fit: contain; }
