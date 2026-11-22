@@ -37,6 +37,13 @@ function makeBots() {
     return li;
   }));
   $("feed-count").textContent = bots.length;
+  $("feed-total").textContent = bots.reduce((s, b) => s + b.amount, 0).toFixed(2);
+  $("feed-paid").textContent = "0.00";
+}
+
+function updatePaid() {
+  const paid = bots.reduce((s, b) => s + (b.li.classList.contains("win") ? b.amount * b.target : 0), 0);
+  $("feed-paid").textContent = paid.toFixed(2);
 }
 
 function updateBots(m, crashedNow) {
@@ -47,9 +54,11 @@ function updateBots(m, crashedNow) {
       b.li.classList.add("win");
       b.li.children[2].textContent = b.target.toFixed(2) + "x";
       b.li.children[3].textContent = "+" + (b.amount * (b.target - 1)).toFixed(2);
+      updatePaid();
     } else if (crashedNow) {
       b.done = true;
       b.li.classList.add("lost");
+      b.li.children[3].textContent = "−" + b.amount.toFixed(2);
     }
   }
 }
