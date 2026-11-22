@@ -1,6 +1,6 @@
 :root {
   --text: #eef0f6; --muted: #7d8498; --green: #38e08c; --arc: #3fcf8e; --red: #ee5367;
-  --glass: rgba(18, 20, 27, .46); --line: rgba(255, 255, 255, .07); --blur: blur(18px);
+  --glass: rgba(16, 18, 24, .72); --line: rgba(255, 255, 255, .07); --blur: blur(18px);
   --radius: 14px; --pad: 57px; --w: 1552px;
 }
 * { box-sizing: border-box; }
@@ -28,8 +28,8 @@ body::before {
 body::after {
   content: ""; position: fixed; inset: 0; z-index: 100; pointer-events: none;
   background:
-    linear-gradient(rgba(255, 255, 255, .015) 2px, transparent 2px) 0 58px / 64px 64px,
-    linear-gradient(90deg, rgba(255, 255, 255, .015) 2px, transparent 2px) 20px 0 / 64px 64px;
+    linear-gradient(rgba(255, 255, 255, .005) 1px, transparent 1px) 0 58px / 64px 64px,
+    linear-gradient(90deg, rgba(255, 255, 255, .005) 1px, transparent 1px) 20px 0 / 64px 64px;
 }
 
 /* frosted glass */
