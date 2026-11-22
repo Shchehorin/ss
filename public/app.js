@@ -175,16 +175,51 @@ function initUpgrade() {
   $("#go").onclick = doUpgrade;
 }
 
-let actx;
-function beep(freq, len) {
-  if (!U.sound) return;
-  try {
-    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
-    const o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime;
-    o.frequency.value = freq; g.gain.setValueAtTime(0.06, t); g.gain.exponentialRampToValueAtTime(0.0001, t + len);
-    o.connect(g); g.connect(actx.destination); o.start(); o.stop(t + len);
-  } catch {}
+/* ---------- sound ---------- */
+let actx; const SFX = { buf: {}, loading: false };
+const SFX_NAMES = ["tick", "click", "select", "whoosh", "win", "lose", "caseopen", "reveal", "coin", "contract"];
+function audio() {
+  if (!actx) {
+    try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch { return null; }
+    const master = actx.createGain(); master.gain.value = 0.9;
+    const comp = actx.createDynamicsCompressor(); master.connect(comp); comp.connect(actx.destination); SFX.out = master;
+  }
+  if (actx.state === "suspended") actx.resume();
+  if (!SFX.loading) {
+    SFX.loading = true;
+    SFX_NAMES.forEach((n) => fetch(`sfx/${n}.wav`).then((r) => r.arrayBuffer()).then((b) => actx.decodeAudioData(b)).then((d) => (SFX.buf[n] = d)).catch(() => {}));
+  }
+  return actx;
 }
+function play(name, o = {}) {
+  if (!U.sound || !audio()) return;
+  const b = SFX.buf[name]; if (!b) return;
+  const s = actx.createBufferSource(), g = actx.createGain();
+  s.buffer = b; s.playbackRate.value = o.rate || 1; g.gain.value = o.vol == null ? 1 : o.vol;
+  s.connect(g); g.connect(SFX.out); s.start(actx.currentTime + (o.at || 0));
+}
+// ticks follow the same easing curve as the CSS transition so they slow down with the wheel
+function bezierY(x1, y1, x2, y2) {
+  const B = (a, b, t) => 3 * a * (1 - t) * (1 - t) * t + 3 * b * (1 - t) * t * t + t * t * t;
+  return (x) => { let lo = 0, hi = 1; for (let i = 0; i < 30; i++) { const m = (lo + hi) / 2; B(x1, x2, m) < x ? (lo = m) : (hi = m); } return B(y1, y2, lo); };
+}
+function playTicks(count, dur, x1, y1, x2, y2) {
+  if (!U.sound || !audio()) return;
+  const ease = bezierY(x1, y1, x2, y2); let k = 1, prev = 0;
+  for (let ti = 0; ti <= 1 && k <= count; ti += 0.0005) {
+    const p = ease(ti);
+    while (k <= count && p >= k / count) {
+      const speed = Math.min(1, (ti - prev) * 400 + 0.35);
+      play("tick", { at: ti * dur, vol: 0.35 + 0.4 * speed, rate: 0.92 + Math.random() * 0.16 });
+      k++; prev = ti;
+    }
+  }
+}
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".skin:not(.static)")) play("select", { rate: 0.95 + Math.random() * 0.1, vol: 0.7 });
+  else if (e.target.closest("nav a, .chip, .mini, .tabs button, .mult button")) play("click", { vol: 0.6 });
+}, true);
+
 
 function doUpgrade() {
   const t = CATALOG[U.target], c = chance(), v = srcValue();
@@ -193,10 +228,13 @@ function doUpgrade() {
   const roll = Math.random() * 100, win = roll < c, dur = U.fast ? 1.2 : 4.6;
   const ptr = $("#pointer");
   // the green arc is centred at the bottom, so a winning roll lands inside it
+  const prevAngle = U.angle;
   U.angle = (Math.floor(U.angle / 360) + 6) * 360 + (180 - c * 1.8) + roll * 3.6;
   ptr.style.setProperty("--spin", dur + "s");
   ptr.classList.add("spin");
   ptr.style.transform = `rotate(${U.angle}deg)`;
+  play("whoosh", { vol: 0.8 });
+  playTicks(Math.round((U.angle - prevAngle) / 9), dur, 0.12, 0.7, 0.1, 1);
   const given = S.inv.filter((x) => U.sel.has(x.uid));
   setTimeout(() => {
     S.inv = S.inv.filter((x) => !U.sel.has(x.uid));
@@ -204,7 +242,7 @@ function doUpgrade() {
     if (win) { addItem(t.id); toast(`Ви отримали ${t.weapon} | ${t.name}`); }
     store.save();
     pushLive(given.length ? item(given[0]) : { weapon: "Баланс", name: "", price: v }, t, c, win);
-    beep(win ? 880 : 196, 0.3);
+    play(win ? "win" : "lose");
     U.sel.clear(); $("#addbal").value = 0;
     Object.assign(U, { add: 0, target: null, mult: 2, busy: false, res: { c, win } });
     renderAll();
@@ -252,11 +290,12 @@ function renderInventoryViews() {
 }
 function sell(uid) {
   const it = S.inv.find((x) => x.uid === uid); if (!it) return;
-  S.inv = S.inv.filter((x) => x.uid !== uid); setBalance(S.balance + item(it).price); renderAll();
+  S.inv = S.inv.filter((x) => x.uid !== uid); setBalance(S.balance + item(it).price); play("coin"); renderAll();
 }
-$("#sell-all").onclick = () => { const t = S.inv.reduce((s, x) => s + item(x).price, 0); S.inv = []; setBalance(S.balance + t); renderAll(); };
+$("#sell-all").onclick = () => { const t = S.inv.reduce((s, x) => s + item(x).price, 0); S.inv = []; setBalance(S.balance + t); play("coin"); renderAll(); };
 $("#ct-go").onclick = () => {
   const items = S.inv.filter((x) => C.sel.has(x.uid)); if (items.length < 3) return;
+  play("contract");
   const sum = items.reduce((s, x) => s + item(x).price, 0);
   const target = sum * (0.5 + Math.random() * 1.0) * 0.95;
   const best = CATALOG.reduce((a, b) => (Math.abs(b.price - target) < Math.abs(a.price - target) ? b : a));
@@ -308,7 +347,9 @@ $("#open-btn").onclick = () => {
   const jitter = (Math.random() - 0.5) * 100;
   st.style.transition = "transform 6s cubic-bezier(.1,.7,.1,1)";
   st.style.transform = `translateX(${-(WIN * W + 75 + jitter)}px)`;
+  play("caseopen"); playTicks(WIN, 6, 0.1, 0.7, 0.1, 1);
   setTimeout(() => {
+    play("reveal");
     addItem(win.id); store.save(); O.busy = false;
     $("#open-btn").disabled = false;
     $("#open-res").innerHTML = `Випало: <b>${win.weapon} | ${win.name}</b> (${money(win.price)})`;
@@ -317,7 +358,7 @@ $("#open-btn").onclick = () => {
 };
 
 /* ---------- misc ---------- */
-$("#topup").onclick = () => { setBalance(S.balance + 100); toast("+$100 (демо-баланс)"); };
+$("#topup").onclick = () => { setBalance(S.balance + 100); play("coin"); toast("+$100 (демо-баланс)"); };
 $("#login").onclick = () => toast("Вхід через Steam буде доступний у повній версії");
 
 function renderAll() { renderBalance(); renderUpgrade(); renderInventoryViews(); }
