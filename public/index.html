@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UPGRD · Кейси та апгрейд скінів CS2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <aside class="side">
-    <a class="brand" href="#upgrade"><span class="brand-ico">↑</span>UP<b>GRD</b></a>
+    <a class="brand" href="#upgrade">
+      <svg class="brand-ico" viewBox="0 0 30 30" fill="none" aria-hidden="true"><defs><linearGradient id="lg-ring" gradientUnits="userSpaceOnUse" x1="10.6" y1="31.2" x2="19.2" y2="-.2"><stop stop-color="#6ceeb7"/><stop offset="1" stop-color="#22aba1"/></linearGradient><linearGradient id="lg-arrow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6ceeb7"/><stop offset="1" stop-color="#1ea6a0"/></linearGradient></defs><circle cx="15" cy="15" r="12.5" stroke="rgba(255,255,255,.15)" stroke-width="3"/><circle cx="15" cy="15" r="12.5" stroke="url(#lg-ring)" stroke-width="3" stroke-linecap="round" stroke-dasharray="50.3 78.54" transform="rotate(245 15 15)"/><path d="M15 7.5 21 14H17.6V22H12.4V14H9Z" fill="url(#lg-arrow)"/></svg>
+      <span class="brand-txt">UP<b>GRD</b></span>
+    </a>
     <div class="live-title"><i></i>LIVE · АПГРЕЙДИ</div>
     <div class="live" id="live"></div>
   </aside>
@@ -31,7 +37,7 @@
     <main>
       <section id="upgrade" class="page">
         <div class="up-grid">
-          <div class="card">
+          <div class="card side-card">
             <h6>Ви віддаєте</h6>
             <div class="slot" id="give-slot"></div>
             <div class="addbal">
@@ -44,21 +50,24 @@
             </div>
           </div>
 
-          <div class="card wheel-card">
-            <div class="wheel-wrap">
-              <svg viewBox="0 0 260 260" class="wheel">
-                <circle cx="130" cy="130" r="112" class="ring"/>
-                <circle cx="130" cy="130" r="112" class="arc" id="arc" transform="rotate(-90 130 130)"/>
+          <div class="card wheel-card" id="wheel-card">
+            <div class="stage">
+              <button class="tool on" id="snd" title="Звук"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
+              <button class="tool" id="fast" title="Швидкий режим"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></button>
+              <svg viewBox="0 0 340 340" class="wheel">
+                <circle cx="170" cy="170" r="147.5" class="ring"/>
+                <circle cx="170" cy="170" r="147.5" class="arc" id="arc"/>
+                <circle cx="170" cy="170" r="109.5" class="inner"/>
                 <g class="ticks" id="ticks"></g>
-                <g id="pointer" class="pointer"><path d="M130 8 L141 -4 L119 -4 Z"/></g>
+                <g id="pointer" class="pointer"><path d="M170 5.5 179 -11H161Z"/></g>
               </svg>
               <div class="wheel-text" id="wheel-text">0%</div>
-              <div class="chance-side"><b id="chance-top">0%</b><div class="bar"><i id="chance-bar"></i></div><small>ШАНС</small></div>
+              <div class="chance-side"><b id="chance-top">0%</b><div class="bar"><i id="chance-bar"></i><u id="chance-knob"></u></div><small>ШАНС</small></div>
             </div>
             <button class="go" id="go" disabled>Апгрейд</button>
           </div>
 
-          <div class="card">
+          <div class="card side-card">
             <h6>Ви отримуєте</h6>
             <div class="slot" id="get-slot"></div>
             <div class="mults">
@@ -74,13 +83,13 @@
         <div class="two">
           <div class="card">
             <div class="card-head"><h3>Ваш інвентар <small id="inv-count"></small></h3>
-              <div class="filters"><input class="fi" id="f-from" placeholder="від $" inputmode="decimal"><input class="fi" id="f-to" placeholder="до $" inputmode="decimal"><button class="mini sq" id="f-sort" title="Сортування">↓</button></div>
+              <div class="filters"><input class="fi" id="f-from" placeholder="від $" inputmode="decimal"><input class="fi" id="f-to" placeholder="до $" inputmode="decimal"><button class="mini sq" id="f-sort" title="Сортування"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button></div>
             </div>
             <div class="grid" id="up-inv"></div>
           </div>
           <div class="card">
             <div class="card-head"><h3>Бажаний скін</h3>
-              <div class="filters"><input class="fi" id="t-search" placeholder="Пошук"><input class="fi" id="t-from" placeholder="від $" inputmode="decimal"><input class="fi" id="t-to" placeholder="до $" inputmode="decimal"></div>
+              <div class="filters"><input class="fi" id="t-search" placeholder="Пошук" hidden><button class="mini sq" id="t-find" title="Пошук"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button><input class="fi" id="t-from" placeholder="від $" inputmode="decimal"><input class="fi" id="t-to" placeholder="до $" inputmode="decimal"></div>
             </div>
             <div class="grid" id="up-target"></div>
           </div>
