@@ -177,7 +177,17 @@ function initUpgrade() {
 
 /* ---------- sound ---------- */
 let actx; const SFX = { buf: {}, loading: false };
-const SFX_NAMES = ["tick", "click", "select", "whoosh", "win", "lose", "caseopen", "reveal", "coin", "contract"];
+const SFX_NAMES = ["tick", "click", "select", "whoosh", "win", "lose", "caseopen", "reveal", "coin", "contract", "ambient"];
+// quiet looping drone; starts after the first user gesture and follows the sound toggle
+function syncAmbient() {
+  if (!actx || !SFX.buf.ambient) return;
+  if (!SFX.amb) {
+    const s = actx.createBufferSource(), g = actx.createGain();
+    s.buffer = SFX.buf.ambient; s.loop = true; g.gain.value = 0; s.connect(g); g.connect(SFX.out); s.start();
+    SFX.amb = g;
+  }
+  SFX.amb.gain.setTargetAtTime(U.sound ? 0.16 : 0, actx.currentTime, 0.8);
+}
 function audio() {
   if (!actx) {
     try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch { return null; }
@@ -187,7 +197,7 @@ function audio() {
   if (actx.state === "suspended") actx.resume();
   if (!SFX.loading) {
     SFX.loading = true;
-    SFX_NAMES.forEach((n) => fetch(`sfx/${n}.wav`).then((r) => r.arrayBuffer()).then((b) => actx.decodeAudioData(b)).then((d) => (SFX.buf[n] = d)).catch(() => {}));
+    SFX_NAMES.forEach((n) => fetch(`sfx/${n}.wav`).then((r) => r.arrayBuffer()).then((b) => actx.decodeAudioData(b)).then((d) => { SFX.buf[n] = d; if (n === "ambient") syncAmbient(); }).catch(() => {}));
   }
   return actx;
 }
@@ -210,12 +220,14 @@ function playTicks(count, dur, x1, y1, x2, y2) {
     const p = ease(ti);
     while (k <= count && p >= k / count) {
       const speed = Math.min(1, (ti - prev) * 400 + 0.35);
-      play("tick", { at: ti * dur, vol: 0.35 + 0.4 * speed, rate: 0.92 + Math.random() * 0.16 });
+      play("tick", { at: ti * dur, vol: 0.14 + 0.2 * speed, rate: 0.92 + Math.random() * 0.16 });
       k++; prev = ti;
     }
   }
 }
 document.addEventListener("click", (e) => {
+  if (U.sound) audio();
+  if (e.target.closest("#snd")) setTimeout(() => { if (U.sound) audio(); syncAmbient(); });
   if (e.target.closest(".skin:not(.static)")) play("select", { rate: 0.95 + Math.random() * 0.1, vol: 0.7 });
   else if (e.target.closest("nav a, .chip, .mini, .tabs button, .mult button")) play("click", { vol: 0.6 });
 }, true);
