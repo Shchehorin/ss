@@ -109,7 +109,10 @@ el.action.onclick = () => {
 };
 
 document.querySelectorAll(".chip").forEach((c) => {
-  c.onclick = () => (el.bet.value = Math.max(1, Math.floor(el.bet.value * c.dataset.mul)));
+  c.onclick = () => {
+    const v = c.dataset.set ? +c.dataset.set : el.bet.value * c.dataset.mul;
+    el.bet.value = Math.max(1, Math.floor(v));
+  };
 });
 
 function cashOut() {

@@ -8,7 +8,7 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="logo">ZEPPELIN<span>CRASH</span></div>
+    <div class="logo">ZEPPELIN<span>CRASH</span><i class="demo">DEMO</i></div>
     <div class="balance">Баланс <b id="balance">1000.00</b></div>
   </header>
 
@@ -31,18 +31,28 @@
     </section>
 
     <aside class="panel">
-      <label>Ставка
-        <div class="row">
+      <div class="field">
+        <span>Ставка</span>
+        <div class="input">
           <input id="bet" type="number" min="1" step="1" value="10">
           <button class="chip" data-mul="0.5">½</button>
-          <button class="chip" data-mul="2">2×</button>
+          <button class="chip" data-mul="2" style="margin-left:4px">2×</button>
         </div>
-      </label>
-      <label>Автовивід (x)
-        <input id="auto" type="number" min="1.01" step="0.01" placeholder="вимкнено">
-      </label>
+      </div>
+      <div class="field">
+        <span>Автовивід</span>
+        <div class="input">
+          <input id="auto" type="number" min="1.01" step="0.01" placeholder="Вимкнено">
+          <em>x</em>
+        </div>
+      </div>
       <button id="action" class="action">Зробити ставку</button>
-      <p class="hint">Демо-режим · віртуальні гроші</p>
+      <div class="quick">
+        <button class="chip" data-set="10">10</button>
+        <button class="chip" data-set="50">50</button>
+        <button class="chip" data-set="100">100</button>
+        <button class="chip" data-set="500">500</button>
+      </div>
     </aside>
   </main>
 
