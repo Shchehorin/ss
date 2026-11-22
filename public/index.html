@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zeppelin Crash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,28 +33,26 @@
     </section>
 
     <aside class="panel">
-      <div class="field">
-        <span>Ставка</span>
-        <div class="input">
+      <div class="stepper">
+        <button class="step chip-add" data-add="-10" aria-label="Менше">−</button>
+        <div class="amount">
+          <small>Ставка</small>
           <input id="bet" type="number" min="1" step="1" value="10">
-          <button class="chip" data-mul="0.5">½</button>
-          <button class="chip" data-mul="2" style="margin-left:4px">2×</button>
         </div>
+        <button class="step chip-add" data-add="10" aria-label="Більше">+</button>
       </div>
-      <div class="field">
-        <span>Автовивід</span>
-        <div class="input">
-          <input id="auto" type="number" min="1.01" step="0.01" placeholder="Вимкнено">
-          <em>x</em>
-        </div>
-      </div>
-      <button id="action" class="action">Зробити ставку</button>
       <div class="quick">
-        <button class="chip" data-set="10">10</button>
+        <button class="chip" data-mul="0.5">½</button>
         <button class="chip" data-set="50">50</button>
         <button class="chip" data-set="100">100</button>
         <button class="chip" data-set="500">500</button>
+        <button class="chip" data-mul="2">2×</button>
       </div>
+      <div class="autobox">
+        <label><input type="checkbox" id="auto-on"> Автовивід</label>
+        <span class="autoval"><input id="auto" type="number" min="1.01" step="0.01" value="2.00" disabled>x</span>
+      </div>
+      <button id="action" class="action">Зробити ставку</button>
     </aside>
   </main>
 

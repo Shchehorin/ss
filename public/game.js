@@ -108,12 +108,16 @@ el.action.onclick = () => {
   updateButton();
 };
 
-document.querySelectorAll(".chip").forEach((c) => {
+document.querySelectorAll(".chip, .step").forEach((c) => {
   c.onclick = () => {
-    const v = c.dataset.set ? +c.dataset.set : el.bet.value * c.dataset.mul;
+    const d = c.dataset;
+    const cur = +el.bet.value || 0;
+    const v = d.set ? +d.set : d.add ? cur + +d.add : cur * d.mul;
     el.bet.value = Math.max(1, Math.floor(v));
   };
 });
+
+$("auto-on").onchange = (e) => (el.auto.disabled = !e.target.checked);
 
 function cashOut() {
   bet.cashed = true;
@@ -176,7 +180,7 @@ function loop(now) {
   if (state !== "flying") return;
   const t = (now - startTime) / 1000;
   mult = Math.exp(GROWTH * t);
-  const auto = parseFloat(el.auto.value);
+  const auto = el.auto.disabled ? NaN : parseFloat(el.auto.value);
   if (bet && !bet.cashed && auto >= 1.01 && mult >= auto) {
     mult = auto;
     cashOut();
