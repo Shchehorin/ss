@@ -25,8 +25,8 @@ body {
 .balance b { color: var(--accent); font-size: 1.2rem; }
 
 .layout {
-  display: grid; grid-template-columns: 1fr 300px; gap: 16px;
-  max-width: 1100px; margin: 20px auto; padding: 0 16px;
+  display: grid; grid-template-columns: 260px 1fr 300px; gap: 16px;
+  max-width: 1280px; margin: 20px auto; padding: 0 16px;
 }
 .stage {
   position: relative; background: var(--card); border: 1px solid var(--line);
@@ -77,6 +77,32 @@ input {
 .action:disabled { background: #2a335c; color: var(--muted); cursor: not-allowed; }
 .hint { margin: 0; color: var(--muted); font-size: .75rem; text-align: center; }
 
+.feed {
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  display: flex; flex-direction: column; max-height: 520px; overflow: hidden;
+}
+.feed-head {
+  display: flex; justify-content: space-between; padding: 14px 16px;
+  border-bottom: 1px solid var(--line); color: var(--muted); font-size: .85rem;
+}
+.feed-head b { color: var(--text); }
+#feed-list { list-style: none; margin: 0; padding: 6px; overflow-y: auto; }
+#feed-list li {
+  display: grid; grid-template-columns: 1fr auto; gap: 2px 8px;
+  padding: 8px 10px; border-radius: 10px; font-size: .85rem;
+}
+#feed-list li:nth-child(odd) { background: #10172e; }
+#feed-list .user { color: var(--muted); }
+#feed-list .amount { text-align: right; font-weight: 700; }
+#feed-list .x { color: var(--muted); font-size: .8rem; }
+#feed-list .win { background: rgba(46, 204, 113, .15) !important; }
+#feed-list .win .amount, #feed-list .win .x { color: var(--win); }
+#feed-list .lost .amount { color: var(--lose); text-decoration: line-through; opacity: .7; }
+
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: 1fr 300px; }
+  .feed { grid-column: 1 / -1; order: 3; max-height: 300px; }
+}
 @media (max-width: 800px) {
   .layout { grid-template-columns: 1fr; }
   .stage { min-height: 320px; }

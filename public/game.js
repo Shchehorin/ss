@@ -14,6 +14,46 @@ let bet = null; // { amount, cashed }
 let queuedBet = 0;
 let trail = [];
 
+let bots = [];
+const NAMES = ["Max", "Olena", "Taras", "Iryna", "Dmytro", "Sofia", "Andrii", "Kate", "Bohdan", "Vika", "Oleh", "Nazar"];
+
+function makeBots() {
+  const n = 8 + Math.floor(Math.random() * 10);
+  bots = Array.from({ length: n }, () => {
+    const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+    const amount = [5, 10, 20, 50, 100, 250, 500][Math.floor(Math.random() * 7)];
+    return {
+      user: name[0] + "***" + Math.floor(Math.random() * 90 + 10),
+      amount,
+      target: Math.max(1.05, Math.floor(100 / (1 - Math.random() * 0.97)) / 100),
+      done: false,
+      li: null,
+    };
+  }).sort((a, b) => b.amount - a.amount);
+  $("feed-list").replaceChildren(...bots.map((b) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="user">${b.user}</span><span class="amount">${b.amount.toFixed(2)}</span><span class="x">—</span><span></span>`;
+    b.li = li;
+    return li;
+  }));
+  $("feed-count").textContent = bots.length;
+}
+
+function updateBots(m, crashedNow) {
+  for (const b of bots) {
+    if (b.done) continue;
+    if (!crashedNow && m >= b.target) {
+      b.done = true;
+      b.li.classList.add("win");
+      b.li.children[2].textContent = b.target.toFixed(2) + "x";
+      b.li.children[3].textContent = "+" + (b.amount * (b.target - 1)).toFixed(2);
+    } else if (crashedNow) {
+      b.done = true;
+      b.li.classList.add("lost");
+    }
+  }
+}
+
 function randomCrash() {
   const r = Math.random();
   return Math.max(1, Math.floor(97 / (1 - r)) / 100); // ~97% RTP
@@ -77,6 +117,7 @@ function startRound() {
   mult = 1;
   trail = [];
   bet = null;
+  makeBots();
   el.multiplier.className = "multiplier";
   el.multiplier.textContent = "1.00x";
   draw();
@@ -105,6 +146,7 @@ function fly() {
 function crash() {
   state = "crashed";
   mult = crashAt;
+  updateBots(crashAt, true);
   el.multiplier.textContent = crashAt.toFixed(2) + "x";
   el.multiplier.classList.remove("won");
   el.multiplier.classList.add("crashed");
@@ -132,6 +174,7 @@ function loop(now) {
     return crash();
   }
   el.multiplier.textContent = mult.toFixed(2) + "x";
+  updateBots(mult, false);
   trail.push(mult);
   draw();
   if (bet && !bet.cashed) updateButton();
