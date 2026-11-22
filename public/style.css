@@ -107,7 +107,7 @@ main { width: min(var(--w), calc(100% - 2 * var(--pad))); margin: 0 auto; paddin
 .slot-items .skin { min-height: 150px; }
 .slot-total { margin-top: 10px; color: var(--text); font-weight: 700; }
 .slot .big { width: 100%; margin: 0 auto; }
-.card.tint { background-image: linear-gradient(180deg, color-mix(in srgb, var(--tc) 5%, transparent) 0%, color-mix(in srgb, var(--tc) 20%, transparent) 100%); border-color: color-mix(in srgb, var(--tc) 22%, rgba(255, 255, 255, .045)); }
+.card.tint { background-image: linear-gradient(180deg, color-mix(in srgb, var(--tc) 2%, transparent) 0%, color-mix(in srgb, var(--tc) 8%, transparent) 100%); border-color: color-mix(in srgb, var(--tc) 8%, rgba(255, 255, 255, .045)); }
 .skin.bare { color: var(--text); background: none; border-color: transparent; min-height: 0; padding: 0; align-items: center; text-align: center; }
 .skin.bare::before { display: none; }
 .skin.bare .im { padding: 0 0 6px; }
