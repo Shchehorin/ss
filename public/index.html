@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zeppelin Crash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">ZEPPELIN<span>CRASH</span></div>
+    <div class="balance">Баланс <b id="balance">1000.00</b></div>
+  </header>
+
+  <main class="layout">
+    <section class="stage">
+      <div class="history" id="history"></div>
+      <canvas id="canvas"></canvas>
+      <div class="multiplier" id="multiplier">1.00x</div>
+      <div class="status" id="status">Очікування…</div>
+    </section>
+
+    <aside class="panel">
+      <label>Ставка
+        <div class="row">
+          <input id="bet" type="number" min="1" step="1" value="10">
+          <button class="chip" data-mul="0.5">½</button>
+          <button class="chip" data-mul="2">2×</button>
+        </div>
+      </label>
+      <label>Автовивід (x)
+        <input id="auto" type="number" min="1.01" step="0.01" placeholder="вимкнено">
+      </label>
+      <button id="action" class="action">Зробити ставку</button>
+      <p class="hint">Демо-режим · віртуальні гроші</p>
+    </aside>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
