@@ -72,9 +72,9 @@ function resize() {
   const r = canvas.getBoundingClientRect();
   canvas.width = r.width * devicePixelRatio;
   canvas.height = r.height * devicePixelRatio;
+  if (typeof draw === "function") draw();
 }
-addEventListener("resize", resize);
-resize();
+new ResizeObserver(resize).observe(canvas);
 
 function setBalance(v) {
   balance = v;
