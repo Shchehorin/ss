@@ -1,61 +1,132 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zeppelin Crash</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&display=swap" rel="stylesheet">
+  <title>UPGRD · Кейси та апгрейд скінів CS2</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="logo">ZEPPELIN<span>CRASH</span><i class="demo">DEMO</i></div>
-    <div class="balance">Баланс <b id="balance">1000.00</b></div>
-  </header>
+  <aside class="side">
+    <a class="brand" href="#upgrade"><span class="brand-ico">↑</span>UP<b>GRD</b></a>
+    <div class="live-title"><i></i>LIVE · АПГРЕЙДИ</div>
+    <div class="live" id="live"></div>
+  </aside>
 
-  <main class="layout">
-    <aside class="feed">
-      <div class="feed-head"><span>Ставки гравців</span><b id="feed-count">0</b></div>
-      <div class="feed-stats">
-        <div><small>Загальна ставка</small><b id="feed-total">0</b></div>
-        <div><small>Виплачено</small><b id="feed-paid" class="pos">0</b></div>
+  <div class="main">
+    <header class="top">
+      <nav id="nav">
+        <a href="#upgrade">Апгрейд</a>
+        <a href="#contracts">Контракти</a>
+        <a href="#cases">Кейси</a>
+        <a href="#inventory">Інвентар</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <div class="bal"><span id="balance">$0.00</span><button id="topup" title="Поповнити (демо)">+</button></div>
+        <button class="steam" id="login">Увійти через Steam</button>
       </div>
-      <div class="feed-cols"><span>Гравець</span><span>Ставка</span><span>x</span><span>Виграш</span></div>
-      <ul id="feed-list"></ul>
-    </aside>
+    </header>
 
-    <section class="stage">
-      <div class="history" id="history"></div>
-      <canvas id="canvas"></canvas>
-      <div class="multiplier" id="multiplier">1.00x</div>
-      <div class="status" id="status">Очікування…</div>
-    </section>
+    <main>
+      <section id="upgrade" class="page">
+        <div class="up-grid">
+          <div class="card">
+            <h6>Ви віддаєте</h6>
+            <div class="slot" id="give-slot"></div>
+            <div class="addbal">
+              <h6>Додати з балансу</h6>
+              <div class="addbal-row">
+                <input type="range" id="addbal" min="0" max="0" step="0.5" value="0">
+                <b id="addbal-val">$0.00</b>
+                <button class="mini" id="addmax">Макс</button>
+              </div>
+            </div>
+          </div>
 
-    <aside class="panel">
-      <div class="stepper">
-        <button class="step chip-add" data-add="-10" aria-label="Менше">−</button>
-        <div class="amount">
-          <small>Ставка</small>
-          <input id="bet" type="number" min="1" step="1" value="10">
+          <div class="card wheel-card">
+            <div class="wheel-wrap">
+              <svg viewBox="0 0 260 260" class="wheel">
+                <circle cx="130" cy="130" r="112" class="ring"/>
+                <circle cx="130" cy="130" r="112" class="arc" id="arc" transform="rotate(-90 130 130)"/>
+                <g class="ticks" id="ticks"></g>
+                <g id="pointer" class="pointer"><path d="M130 8 L141 -4 L119 -4 Z"/></g>
+              </svg>
+              <div class="wheel-text" id="wheel-text">0%</div>
+              <div class="chance-side"><b id="chance-top">0%</b><div class="bar"><i id="chance-bar"></i></div><small>ШАНС</small></div>
+            </div>
+            <button class="go" id="go" disabled>Апгрейд</button>
+          </div>
+
+          <div class="card">
+            <h6>Ви отримуєте</h6>
+            <div class="slot" id="get-slot"></div>
+            <div class="mults">
+              <h6>Множник</h6>
+              <div class="seg" id="mults">
+                <button data-m="1.5">x1.5</button><button data-m="2">x2</button>
+                <button data-m="3">x3</button><button data-m="5">x5</button><button data-m="10">x10</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <button class="step chip-add" data-add="10" aria-label="Більше">+</button>
-      </div>
-      <div class="quick">
-        <button class="chip" data-mul="0.5">½</button>
-        <button class="chip" data-set="50">50</button>
-        <button class="chip" data-set="100">100</button>
-        <button class="chip" data-set="500">500</button>
-        <button class="chip" data-mul="2">2×</button>
-      </div>
-      <div class="autobox">
-        <label><input type="checkbox" id="auto-on"> Автовивід</label>
-        <span class="autoval"><input id="auto" type="number" min="1.01" step="0.01" value="2.00" disabled>x</span>
-      </div>
-      <button id="action" class="action">Зробити ставку</button>
-    </aside>
-  </main>
 
-  <script src="game.js"></script>
+        <div class="two">
+          <div class="card">
+            <div class="card-head"><h3>Ваш інвентар <small id="inv-count"></small></h3>
+              <div class="filters"><input class="fi" id="f-from" placeholder="від $" inputmode="decimal"><input class="fi" id="f-to" placeholder="до $" inputmode="decimal"><button class="mini sq" id="f-sort" title="Сортування">↓</button></div>
+            </div>
+            <div class="grid" id="up-inv"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Бажаний скін</h3>
+              <div class="filters"><input class="fi" id="t-search" placeholder="Пошук"><input class="fi" id="t-from" placeholder="від $" inputmode="decimal"><input class="fi" id="t-to" placeholder="до $" inputmode="decimal"></div>
+            </div>
+            <div class="grid" id="up-target"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contracts" class="page">
+        <div class="card">
+          <div class="card-head"><h3>Контракт <small>оберіть від 3 до 10 скінів</small></h3>
+            <div class="filters"><b id="ct-sum">$0.00</b><button class="go sm" id="ct-go" disabled>Підписати контракт</button></div>
+          </div>
+          <div class="grid" id="ct-inv"></div>
+        </div>
+        <div class="card" id="ct-result" hidden></div>
+      </section>
+
+      <section id="cases" class="page">
+        <div class="cases-grid" id="cases-grid"></div>
+        <div class="card" id="open-box" hidden>
+          <div class="card-head"><h3 id="open-title"></h3><button class="mini" id="open-close">Закрити</button></div>
+          <div class="roulette"><div class="marker"></div><div class="strip" id="strip"></div></div>
+          <div class="open-actions"><button class="go sm" id="open-btn"></button><div id="open-res"></div></div>
+        </div>
+      </section>
+
+      <section id="inventory" class="page">
+        <div class="card">
+          <div class="card-head"><h3>Інвентар <small id="inv2-count"></small></h3>
+            <div class="filters"><b id="inv-total"></b><button class="mini" id="sell-all">Продати все</button></div>
+          </div>
+          <div class="grid" id="inv-grid"></div>
+        </div>
+      </section>
+
+      <section id="faq" class="page">
+        <div class="card faq">
+          <h3>FAQ</h3>
+          <details open><summary>Як працює апгрейд?</summary><p>Ви обираєте скіни з інвентарю та/або додаєте частину балансу, потім цільовий скін. Шанс = вартість того, що віддаєте, ÷ вартість цілі (з невеликою комісією платформи).</p></details>
+          <details><summary>Що таке контракт?</summary><p>Ви обмінюєте від 3 до 10 скінів на один випадковий, вартість якого близька до сумарної.</p></details>
+          <details><summary>Це реальні гроші?</summary><p>Ні. Це демо-версія: баланс, скіни та стрічка гравців віртуальні.</p></details>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
 </body>
 </html>
