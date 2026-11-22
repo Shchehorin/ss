@@ -111,12 +111,17 @@ function renderUpgrade() {
 
   const selItems = S.inv.filter((x) => U.sel.has(x.uid));
   $("#give-slot").innerHTML = selItems.length
-    ? `<div style="width:100%"><div class="slot-items">${selItems.map((x) => skinHTML(item(x), `data-uid="${x.uid}"`)).join("")}</div><div class="slot-total">Разом: ${money(v)}</div></div>`
+    ? (selItems.length === 1
+      ? `<div style="width:100%"><div class="big">${skinHTML(item(selItems[0]), `data-uid="${selItems[0].uid}"`, "bare")}</div><div class="slot-total">Разом: ${money(v)}</div></div>`
+      : `<div style="width:100%"><div class="slot-items">${selItems.map((x) => skinHTML(item(x), `data-uid="${x.uid}"`)).join("")}</div><div class="slot-total">Разом: ${money(v)}</div></div>`)
     : `<div><div class="ph">+</div>Оберіть скін з інвентарю,<br>який хочете покращити${U.add ? `<div class="slot-total">${money(U.add)} з балансу</div>` : ""}</div>`;
   $("#give-slot").querySelectorAll("[data-uid]").forEach((e) => (e.onclick = () => { if (U.busy) return; U.sel.delete(+e.dataset.uid); U.res = null; renderUpgrade(); }));
 
   const t = U.target != null ? CATALOG[U.target] : null;
-  $("#get-slot").innerHTML = t ? `<div class="big">${skinHTML(t, "", "static")}</div>` : `<div><div class="ph">★</div>Оберіть множник або<br>цільовий скін</div>`;
+  const tint = (slot, s) => { const c = slot.closest(".card"); c.classList.toggle("tint", !!s); if (s) c.style.setProperty("--tc", colorOf(s)); };
+  tint($("#give-slot"), selItems.length ? item(selItems.slice().sort((a, b) => item(b).price - item(a).price)[0]) : null);
+  $("#get-slot").innerHTML = t ? `<div class="big">${skinHTML(t, "", "static bare")}</div>` : `<div><div class="ph">★</div>Оберіть множник або<br>цільовий скін</div>`;
+  tint($("#get-slot"), t);
   document.querySelectorAll("#mults button").forEach((b) => b.classList.toggle("on", +b.dataset.m === U.mult));
   $(".mults").classList.toggle("off", !v);
 
