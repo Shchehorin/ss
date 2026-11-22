@@ -185,7 +185,12 @@ input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
 }
 .skin:hover { filter: brightness(1.04); }
-.skin.sel { box-shadow: 0 0 0 2px var(--vio) inset, 0 0 22px rgba(240, 169, 58, .3); }
+.skin.sel > * { filter: blur(4px); opacity: .5; }
+.skin.sel::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%;
+  background: rgba(255, 255, 255, .14) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M6 12.5l4 4 8-9'/></svg>") center / 20px no-repeat;
+  pointer-events: none;
+}
 .skin .im { flex: 1; min-height: 0; display: grid; place-items: center; padding-top: 6px; }
 .skin .im svg, .skin .im img { width: 116px; height: 70px; object-fit: contain; }
 .skin .nm { font-weight: 700; font-size: 12.25px; line-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
